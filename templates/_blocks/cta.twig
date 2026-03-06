@@ -1,0 +1,11 @@
+<section class="section">
+    <div class="container">
+        <div class="p-2 md:p-4 border md:text-center flex flex-col md:items-center justify-center">
+            {% include "_components/title" with { title: section.title } %}
+            <p class="max-w-40">{{ section.textMultiple }}</p>
+            {% if section.linkField %}
+                {% include "_components/link" with { linkField: section.linkField, btnStyle: true, extraClass: "mt-2" } %}
+            {% endif %}
+        </div>
+    </div>
+</section>

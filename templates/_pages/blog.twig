@@ -1,0 +1,13 @@
+<section class="section section-top">
+    <div class="container container-small">
+        {% include "_components/title" with { title: entry.title, index: 1 } %}
+        <div class="cke">
+            {{ entry.ckeExpanded }}
+        </div>
+    </div>
+</section>
+
+{% include "_pages/content-builder" with {
+    sections: blogFixedContent.contentBuilder.all(),
+    startIndex: 1
+} %}

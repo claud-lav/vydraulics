@@ -1,0 +1,21 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: 89e06ce2-ff33-4cd0-97d9-8d3ff401aaa4 # 404
+handle: pageNotFound
+maxAuthors: 1
+name: '404'
+previewTargets:
+  -
+    label: 'Primary entry page'
+    refresh: '1'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  19c6391b-a582-4651-b999-d4761e7a122c: # vydraulics
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: null
+type: single

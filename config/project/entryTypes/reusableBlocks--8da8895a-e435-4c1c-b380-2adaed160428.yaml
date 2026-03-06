@@ -1,0 +1,40 @@
+color: green
+description: null
+fieldLayouts:
+  5a0f815c-5f29-426f-8de6-993c04d21ec8:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-12-23T12:02:19+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: dcb1221a-0380-45bb-a0b8-1b49332cd861 # Herbruikbare blok
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a13202ec-962a-4289-bde5-041f79c56188
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 2280f7d9-c594-4458-b7ce-c32bb092ff77
+        userCondition: null
+handle: reusableBlocks
+hasTitleField: false
+icon: recycle
+name: 'Herbruikbare blok'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: '{reusableBlock.one().title}'
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

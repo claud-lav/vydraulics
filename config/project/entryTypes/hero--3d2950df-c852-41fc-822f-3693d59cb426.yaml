@@ -1,0 +1,129 @@
+allowLineBreaksInTitles: true
+color: blue
+description: null
+fieldLayouts:
+  8208e7ba-79c8-46ce-a0f9-2a597d72f0bc:
+    cardThumbAlignment: end
+    cardView:
+      - 'layoutElement:73c0adc6-02da-4aae-a630-6c3788d3ffe3'
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-10-08T13:10:11+00:00'
+            dismissible: false
+            elementCondition: null
+            style: warning
+            tip: 'Plaats dit blok uitsluitend als het eerste blok op de pagina voor een optimale weergave.'
+            type: craft\fieldlayoutelements\Tip
+            uid: ef3514d4-9e04-473f-afc0-52a60f15a38b
+            userCondition: null
+          -
+            dateAdded: '2025-10-08T12:54:27+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: b9cfc53b-27bb-4e61-8f85-d438a0085106 # Hero stijl
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 73c0adc6-02da-4aae-a630-6c3788d3ffe3
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-10-08T11:37:15+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 489193e0-cf44-49ff-a295-af886538a4fb
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-10-08T11:38:33+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 58a18928-e4be-4f0f-8851-7a1fc536130a # Tekst
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 649702a7-97e8-44ca-91c1-17d96a72e3b8
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-10-08T11:38:33+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: bb7becdd-3a77-49f6-bf93-f1fd1d9d8f9a # Link
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f7385a3c-9b99-4b46-973f-9b5e242be0c2
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-10-27T12:12:09+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: d419b9ec-3b83-48e2-a5d5-7d675cd35d06 # Afbeelding
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 5de01f86-4629-48aa-b395-f7a72f992d43
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 70f44559-2aa1-4e5b-afbe-298e253666dd
+        userCondition: null
+    thumbFieldKey: null
+handle: hero
+hasTitleField: true
+icon: rectangle-wide
+name: Hero
+showSlugField: false
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

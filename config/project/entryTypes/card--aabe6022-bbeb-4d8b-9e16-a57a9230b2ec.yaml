@@ -1,0 +1,87 @@
+color: null
+description: null
+fieldLayouts:
+  fd1721de-b7ac-4bba-b619-8ecfc53ed7e8:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-10-27T15:14:30+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 5f116111-3c8f-4524-87e6-d5563c08e38c
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-10-27T15:16:10+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 58a18928-e4be-4f0f-8851-7a1fc536130a # Tekst
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: cbaf8fd6-a75d-48a7-89a8-b8a6636fd112
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-10-27T15:16:10+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: d419b9ec-3b83-48e2-a5d5-7d675cd35d06 # Afbeelding
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 27093a25-1f53-4728-a36d-2716e076f5ae
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: e8d71556-148b-4f79-9dac-7e6f266301f2
+        userCondition: null
+handle: card
+hasTitleField: true
+icon: card-club
+name: 'Tekst en media kaart'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

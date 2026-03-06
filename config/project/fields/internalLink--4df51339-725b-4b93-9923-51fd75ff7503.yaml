@@ -1,0 +1,36 @@
+columnSuffix: null
+handle: internalLink
+instructions: null
+name: 'Interne link'
+searchable: false
+settings:
+  advancedFields:
+    - urlSuffix
+  fullGraphqlData: true
+  maxLength: 255
+  showLabelField: false
+  typeSettings:
+    __assoc__:
+      -
+        - entry
+        -
+          __assoc__:
+            -
+              - sources
+              -
+                - 'custom:edc9f746-b40e-4f9c-a60e-b3926351ef17'
+                - 'section:d7a579e5-8da4-4e95-aaea-8c7a35a1123f' # Pagina's
+                - 'section:925e875f-2662-48af-af0b-9828ecbfbabb' # Solutions
+                - 'section:921c0d73-9e49-4b11-aeda-59d9a7d23434' # Industries
+                - 'section:db395745-863e-4cb8-bec2-9ff2beedf3e3' # Blog
+            -
+              - showUnpermittedSections
+              - ''
+            -
+              - showUnpermittedEntries
+              - ''
+  types:
+    - entry
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Link

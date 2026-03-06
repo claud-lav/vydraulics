@@ -1,0 +1,10 @@
+{% set segments = craft.app.request.segments %}
+<nav aria-label="{{ 'Breadcrumb'|t }}" class="breadcrumbs">
+    <a href="{{ siteUrl() }}">{{ 'Home'|t }}</a>
+
+    {% for segment in segments|slice(0, -1) %}
+        {% set url = siteUrl(segments|slice(0, loop.index)|join('/')) %}
+        <span>›</span>
+        <a href="{{ url }}">{{ segment|replace({'-':' '})|capitalize }}</a>
+    {% endfor %}
+</nav>

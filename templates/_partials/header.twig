@@ -1,0 +1,80 @@
+{% set navigation = craft.entries().section('pages').headNav(true).all() %}
+{% set subNavigation = craft.entries().section('pages').subHeadNav(true).all() %}
+{% set currentUrl = entry is defined and entry ? entry.url : null  %}
+{% set logoInverted = companyInfo.logoInverted.one() %}
+
+<header class="w-full center">
+	<div class="py-1 w-full">
+		<div class="container flex flex-row justify-between">
+			<div></div>
+			<nav>
+				<ul class="flex flex-row gap-base">
+					{% for item in subNavigation %}
+						{% set itemType = item.type.handle %}
+						{% if itemType is same as 'dropdownLabel' %}
+							<li>
+								<div class="relative" x-data="{ subNavOpen: false }">
+									<button class="flex flex-row gap-0.5 items-center" @click="subNavOpen = ! subNavOpen">
+										<span>{{ item.title }}</span>
+										{{ svg('assets/icons/chevron-down.svg')|attr({ class:"text-prim w-1 h-auto" })}}
+									</button>
+									<ul class="absolute left-[50%] top-2 -translate-x-[50%] bg-quat/99 rounded-sm p-md w-fit whitespace-nowrap z-10" x-show="subNavOpen" x-cloak x-transition @click.outside="subNavOpen = false">
+										{% for child in item.children %}
+											<li class="group">
+												<a class="{{ currentUrl == child.url ? 'link-selected' }} text-white link text-center md:text-left border-b border-b-transparent group-hover:border-prim flex flex-row gap-0.5" href="{{ child.url }}" aria-label="{{ 'Ga naar'|t ~ child.title }}" target="{{ itemType is same as 'external' ? '_blank' : '_self' }}" rel="{{ itemType is same as 'external' ? 'noopener noreferrer' : '' }}" @click="window.innerWidth < 1280 && (open = false)">
+													<span>{{ child.headLabel is not null ? child.headLabel : child.title }}</span>
+													{{ svg('assets/icons/arrow-top-right.svg')|attr({class:'text-prim group-hover:rotate-45'})}}
+												</a>
+											</li>
+										{% endfor %}
+									</ul>
+								</div>
+							</li>
+						{% else %}
+							<li class="group">
+								<a class="{{ currentUrl == item.url ? 'link-selected' }} link text-center md:text-left py-base! border-b border-b-transparent group-hover:border-prim" href="{{ item.url }}" aria-label="{{ 'Ga naar'|t ~ item.title }}" target="{{ itemType is same as 'external' ? '_blank' : '_self' }}" rel="{{ itemType is same as 'external' ? 'noopener noreferrer' : '' }}" @click="window.innerWidth < 1280 && (open = false)">
+									{{ item.headLabel is not null ? item.headLabel : item.title }}
+								</a>
+							</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<div class="w-full py-2 bg-black text-white">
+		<div class="container flex justify-between items-center" x-data="menu()" x-init="init()" x-bind:class="{ 'open': open }">
+			<div class="w-15 h-fit">
+				{% if logoInverted %}
+					<a href="{{ currentSite.baseUrl }}" class="w-full h-2">
+						{% include "_components/asset" with {
+                            asset: logoInverted,
+                            size: 'third',
+                            class: logoInverted.extension is same as 'svg' ? 'w-full h-auto' : 'w-full h-full'
+                        } %}
+					</a>
+				{% endif %}
+			</div>
+			<div class="hamburger" @click="open = ! open" :class="open ? 'hamburger-open' : ''">
+				<div class="hamburger-bar hamburger-bar--top transition origin-right"></div>
+				<div class="hamburger-bar hamburger-bar--center transition"></div>
+				<div class="hamburger-bar hamburger-bar--bottom transition origin-right"></div>
+			</div>
+			<nav class="fixed md:static top-0 left-0 bg-black md:bg-transparent z-1 h-screen md:h-fit w-screen md:w-fit p-2 pt-8 lg:p-0" x-show="open">
+				<ul class="flex flex-col md:flex-row items-center gap-2 w-full h-full">
+					{% for item in navigation %}
+						{% if item.asBtn %}
+							{% include "_components/link" with { url: item.url, label: item.title, btnStyle: true } %}
+						{% else %}
+							<li class="group">
+								<a class="{{ currentUrl == item.url ? '' }} text-center md:text-left py-xs! border-b border-b-transparent group-hover:border-prim" href="{{ item.url }}" aria-label="{{ 'Ga naar'|t ~ item.title }}" target="{{ item.type.handle is same as 'external' ? '_blank' : '_self' }}" rel="{{ item.type.handle is same as 'external' ? 'noopener noreferrer' : '' }}" @click="window.innerWidth < 1280 && (open = false)">
+									{{ item.headLabel is not null ? item.headLabel : item.title }}
+								</a>
+							</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			</nav>
+		</div>
+	</div>
+</header>

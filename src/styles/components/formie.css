@@ -1,0 +1,29 @@
+body .fui {
+    &-input {
+        @apply text-black
+    }
+
+    &-btn {
+        @apply bg-prim border-prim hover:bg-black hover:border-black;
+    }
+
+    &-error-message {
+        @apply text-error
+    }
+
+    &-error {
+        @apply border-error
+    }
+
+    &-required {
+        @apply text-prim;
+    }
+}
+
+body .fui-error .fui-label, .fui-error .fui-legend, body .fui-input.fui-error, .fui-select.fui-error {
+    @apply text-error;
+}
+
+body .fui-checkbox input:checked+label:before, .fui-radio input:checked+label:before {
+    @apply bg-prim border-prim
+}

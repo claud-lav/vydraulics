@@ -1,0 +1,169 @@
+color: null
+description: null
+fieldLayouts:
+  f48997ec-63c9-4784-9c9e-307164041899:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-10-30T09:58:02+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: ed9ed3a6-0289-4782-b3f0-f9927da03bac
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-10-30T09:59:55+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 58a18928-e4be-4f0f-8851-7a1fc536130a # Tekst
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 91d5ccd0-faf1-4c19-9fa1-4454fa2abd2a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-10-30T09:59:55+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: d419b9ec-3b83-48e2-a5d5-7d675cd35d06 # Afbeelding
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 3cbea7a6-f009-4532-b5a7-4518cf484134
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-10-30T09:59:55+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: d5670209-ed06-4feb-a759-387539d6656a # Grafisch
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 15e5a945-2011-4dea-80bb-ebd00f721b32
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-10-30T09:59:55+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: bb7becdd-3a77-49f6-bf93-f1fd1d9d8f9a # Link
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8e2dadba-ffeb-4a07-9aa5-357e2a85697c
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: ce883bf8-defa-4471-9074-ff38f696a1d6
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-10-30T14:14:27+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 47208dc2-a0f0-48f6-97a3-57467ab1ca51 # Grid nummers
+            handle: colSpan
+            includeInCards: false
+            instructions: null
+            label: 'Col span'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 770d3824-8fc8-4245-b88e-f9dd10834b04
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-10-30T14:14:27+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 47208dc2-a0f0-48f6-97a3-57467ab1ca51 # Grid nummers
+            handle: rowSpan
+            includeInCards: false
+            instructions: null
+            label: 'Row span'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 85025b09-ca15-4999-a34a-1cf2ae38b713
+            userCondition: null
+            warning: null
+            width: 100
+        name: Instellingen
+        uid: 07390670-38af-4a27-a1b8-eb5856baf1ea
+        userCondition:
+          class: craft\elements\conditions\users\UserCondition
+          conditionRules:
+            -
+              class: craft\elements\conditions\users\AdminConditionRule
+              uid: 00a62efe-a460-40d3-a331-7e8f42e2b2f3
+              value: true
+          elementType: craft\elements\User
+          fieldContext: global
+handle: gridItem
+hasTitleField: true
+icon: card-club
+name: 'Grid item'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

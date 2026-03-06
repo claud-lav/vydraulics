@@ -1,0 +1,17 @@
+<section class="section section-nmt relative overflow-hidden min-h-40 md:min-h-50 flex items-center justify-end md:justify-center">
+    {% if section.img.one() %}
+        <div class="absolute top-0 left-0 -z-1 h-full w-full after:content-[''] after:h-full after:w-full after:bg-black/20 after:absolute after:top-0 after:left-0">
+            {% include "_components/img/img-full" with {
+                img: section.img.one(), 
+                extraClass: 'h-full w-full object-cover'
+            } %}
+        </div>
+    {% endif %}
+    <div class="container py-4 text-white">
+        {% include "_components/title" with { title: section.title } %}
+        <p class="max-w-50">{{ section.textMultiple }}</p>
+        {% if section.linkField %}
+            {% include "_components/link" with { linkField: section.linkField, btnStyle: true, extraClass: 'mt-2' } %}
+        {% endif %}
+    </div>
+</section>

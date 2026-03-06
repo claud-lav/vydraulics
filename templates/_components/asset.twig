@@ -1,0 +1,61 @@
+{#
+  Unified Asset Component
+
+  @param asset       - The asset to render (required)
+  @param size        - Transform size: 'full', 'half', 'third', 'fourth' (default: 'half')
+  @param class       - CSS class for the img/video element
+  @param pictureClass - CSS class for the picture element
+  @param hasLightbox - Enable Fancybox lightbox (default: false)
+  @param isGallery   - Use gallery mode for lightbox (default: false)
+#}
+
+{% set size = size ?? 'half' %}
+{% set class = class ?? null %}
+{% set pictureClass = pictureClass ?? null %}
+{% set hasLightbox = hasLightbox ?? false %}
+{% set isGallery = isGallery ?? false %}
+
+{% set fancyAttr = hasLightbox ? (isGallery ? "data-fancybox='gallery'" : "data-fancybox") : null %}
+
+{# Get asset URL - use Craft's built-in URL generation for private filesystems #}
+{% set assetUrl = asset.url ?? asset.getUrl() %}
+
+{% if asset.extension in ['mp4', 'webm', 'ogg'] %}
+  {# Video - use Craft's action URL for private filesystems #}
+  {% set videoUrl = assetUrl ?? craft.app.assets.getAssetUrl(asset) %}
+  {% if hasLightbox %}<a href="{{ videoUrl }}" {{ fancyAttr }}>{% endif %}
+    <video class="video {{ class }}" autoplay muted loop playsinline>
+      <source src="{{ videoUrl }}" type="video/{{ asset.extension }}">
+      Your browser does not support the video tag.
+    </video>
+  {% if hasLightbox %}</a>{% endif %}
+
+{% elseif asset.extension == 'svg' %}
+  {# SVG - inline SVG works with private filesystems #}
+  {% if hasLightbox %}<a href="{{ assetUrl }}" {{ fancyAttr }}>{% endif %}
+    {{ svg(asset)|attr({ class: class }) }}
+  {% if hasLightbox %}</a>{% endif %}
+
+{% else %}
+  {# Image with responsive transforms - pass asset object directly to Imager X #}
+  {% set transformWebp = craft.imagerx.transformImage(asset, size ~ 'Webp') %}
+  {% set transformFallback = craft.imagerx.transformImage(asset, size ~ (asset.extension == 'png' ? 'Png' : 'Jpeg')) %}
+
+  {# Use first transform URL for lightbox (full quality) #}
+  {% set lightboxUrl = transformFallback|last %}
+
+  {% if hasLightbox %}<a href="{{ lightboxUrl }}" {{ fancyAttr }}>{% endif %}
+
+  <picture{% if pictureClass %} class="{{ pictureClass }}"{% endif %}>
+    {# WebP source #}
+    <source srcset="{{ craft.imagerx.srcset(transformWebp) }}" sizes="100vw" type="image/webp">
+
+    {# Fallback source (jpeg/png) #}
+    <source srcset="{{ craft.imagerx.srcset(transformFallback) }}" sizes="100vw" type="image/{{ asset.extension }}">
+
+    {# Use smallest transform as fallback src #}
+    <img class="img {{ class }} dynamic-priority-img" src="{{ transformFallback[0] }}" alt="{{ asset.alt }}" width="{{ asset.width }}" height="{{ asset.height }}" loading="lazy" decoding="async">
+  </picture>
+
+  {% if hasLightbox %}</a>{% endif %}
+{% endif %}

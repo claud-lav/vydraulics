@@ -1,0 +1,93 @@
+columnSuffix: null
+handle: contentBuilder
+instructions: null
+name: 'Content Builder'
+searchable: false
+settings:
+  createButtonLabel: 'Nieuw blok toevoegen'
+  defaultIndexViewMode: cards
+  enableVersioning: true
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 3d2950df-c852-41fc-822f-3693d59cb426 # Hero
+        -
+          - group
+          - Basis
+    -
+      __assoc__:
+        -
+          - uid
+          - b669478b-48d0-44ef-83a2-57b96b2ab019 # Tekst en media
+        -
+          - group
+          - Basis
+    -
+      __assoc__:
+        -
+          - uid
+          - ed256f5e-30b9-4e9a-a2e2-f34c9e4fdedf # Bedankt
+        -
+          - group
+          - Basis
+    -
+      __assoc__:
+        -
+          - uid
+          - 4db13d2e-52ea-40df-a669-bc6f26a7b3b7 # Content overzicht
+        -
+          - group
+          - Weergave
+    -
+      __assoc__:
+        -
+          - uid
+          - 131373ac-7b23-42f7-9044-7f7b990afd0a # Slider
+        -
+          - group
+          - Weergave
+    -
+      __assoc__:
+        -
+          - uid
+          - d5ff05d1-6363-4f78-b240-c6d01051021f # Lijst
+        -
+          - group
+          - Weergave
+    -
+      __assoc__:
+        -
+          - uid
+          - 0c71ac55-7755-4836-a994-46cdb5598721 # CTA / Banner
+        -
+          - group
+          - Interactie
+    -
+      __assoc__:
+        -
+          - uid
+          - 5d992cd5-90eb-4385-ab67-201f8c4735d3 # Formulier
+        -
+          - group
+          - Interactie
+    -
+      __assoc__:
+        -
+          - uid
+          - 8da8895a-e435-4c1c-b380-2adaed160428 # Herbruikbare blok
+        -
+          - group
+          - Herbruikbaar
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: 50
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: cards
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

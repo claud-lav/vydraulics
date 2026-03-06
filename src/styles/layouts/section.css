@@ -1,0 +1,11 @@
+.section {
+  @apply flex flex-col items-center my-4 lg:my-8 w-full overflow-hidden;
+}
+
+.section-top {
+  @apply flex flex-col items-center mt-2 mb-4 lg:my-8 w-full;
+}
+
+.section-nmt {
+  @apply mt-0;
+}

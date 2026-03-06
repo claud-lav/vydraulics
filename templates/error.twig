@@ -1,0 +1,64 @@
+{% extends "_layouts/base" %}
+
+{% block header %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{% block content %}
+	<section class="min-h-screen flex flex-col items-center justify-center text-center p-8 bg-white">
+		<div class="max-w-lg flex flex-col items-center gap-4">
+			<div class="text-prim font-semibold leading-none cursor-default" id="toggle" style="font-size: clamp(3rem, 10vw, 5rem);">{{ statusCode }}</div>
+			<h1 class="text-lg font-semibold text-black">
+				{% if statusCode == 404 %}
+					{{ 'Page not found'|t }}
+				{% elseif statusCode == 403 %}
+					{{ 'No access'|t }}
+				{% elseif statusCode == 503 %}
+					{{ 'Please wait'|t }}
+				{% elseif statusCode >= 500 %}
+					{{ 'Something went wrong'|t }}
+				{% else %}
+					{{ 'Oops'|t }}
+				{% endif %}
+			</h1>
+			<p class="text-sm text-black/60 leading-relaxed">
+				{% if statusCode == 404 %}
+					{{ 'The page you are looking for does not exist or has been moved.'|t }}
+				{% elseif statusCode == 503 %}
+					{{ 'We are working on the website. This will only take a moment.'|t }}
+				{% else %}
+					{{ 'An error occurred while loading this page.'|t }}
+				{% endif %}
+			</p>
+			<div class="mt-2 flex flex-row gap-3">
+				{% include "_components/link" with { url: 'javascript:history.back()', label: 'Go back'|t, btnStyle: true } %}
+				{% include "_components/link" with { url: '/', label: 'Home'|t, btnStyle: true } %}
+			</div>
+
+			{% set exception = craft.app.errorHandler.exception ?? null %}
+			<div class="hidden w-full max-w-xl mt-6 bg-black/90 text-white/80 rounded-lg p-5 font-mono text-xs text-left max-h-75 overflow-y-auto" id="debug">
+				<style>.debug-label { color: #f38ba8; font-weight: bold; display: block; margin-top: 0.75rem; } .debug-label:first-child { margin-top: 0; } .debug-value { color: #a6e3a1; }</style>
+				<span class="debug-label">Status</span>
+				<span class="debug-value">{{ statusCode }}</span>
+				{% if exception %}
+					<span class="debug-label">Error</span>
+					<span class="wrap-break-word">{{ exception.message }}</span>
+					<span class="debug-label">File</span>
+					<span class="wrap-break-word">{{ exception.file ?? '' }}:<span class="debug-value">{{ exception.line ?? '' }}</span></span>
+					{% if exception.previous is defined and exception.previous %}
+						<span class="debug-label">Caused by</span>
+						<span class="wrap-break-word">{{ exception.previous.message }}</span>
+						<span class="debug-label">File</span>
+						<span class="wrap-break-word">{{ exception.previous.file ?? '' }}:<span class="debug-value">{{ exception.previous.line ?? '' }}</span></span>
+					{% endif %}
+				{% else %}
+					<span class="debug-label">Error</span>
+					<span class="wrap-break-word">{{ message }}</span>
+				{% endif %}
+			</div>
+		</div>
+	</section>
+
+	<script>
+		var c=0,t;document.getElementById('toggle').addEventListener('click',function(){c++;clearTimeout(t);t=setTimeout(function(){c=0},500);if(c===3){document.getElementById('debug').classList.toggle('hidden')}})
+	</script>
+{% endblock %}

@@ -1,0 +1,3 @@
+{% if section.customBlock.value %}
+    {% include "_blocks/custom-block/custom-block-" ~ section.customBlock.value|kebab %}
+{% endif %}

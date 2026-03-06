@@ -1,0 +1,43 @@
+* {
+  @apply box-border;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  @apply relative m-0 min-h-screen w-full overflow-x-hidden flex flex-col font-base text-black bg-ter;
+}
+
+main {
+  @apply w-full grow;
+}
+
+[x-cloak] {
+  display: none !important;
+}
+
+/* body .swiper-slide {
+    opacity: 0;
+    transition: opacity ease-in-out 0.3s;
+} */
+
+button {
+  @apply hover:cursor-pointer;
+}
+
+/* reCAPTCHA notice */
+.recaptcha-notice {
+  @apply text-xs opacity-60 mt-4;
+
+  a {
+    @apply underline hover:no-underline;
+  }
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
+}

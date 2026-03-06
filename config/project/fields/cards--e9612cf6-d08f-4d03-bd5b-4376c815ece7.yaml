@@ -1,0 +1,29 @@
+columnSuffix: null
+handle: cards
+instructions: null
+name: 'Tekst en media kaarten '
+searchable: false
+settings:
+  createButtonLabel: null
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - aabe6022-bbeb-4d8b-9e16-a57a9230b2ec # Tekst en media kaart
+        -
+          - group
+          - General
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: 50
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: cards
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

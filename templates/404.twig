@@ -1,0 +1,18 @@
+{% extends "_layouts/base" %}
+
+{% block content %}
+    <section class="section">
+        <div class="container">
+            <h1>{{ pageNotFound.title }}</h1>
+            <div class="my-1 text-cke">
+                {{ pageNotFound.ckeSimple }}
+            </div>
+            <div class="mt-3 flex flex-row gap-2">
+                {% include "components/link" with { url: 'javascript:history.back()', label: 'Terug naar vorige pagina'|t, btnStyle: true } %}
+                {% if pageNotFound.linkField %}
+                    {% include "_components/link" with { linkField: pageNotFound.linkField } %}
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

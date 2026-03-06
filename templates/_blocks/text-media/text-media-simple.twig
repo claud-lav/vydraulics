@@ -1,0 +1,18 @@
+{% set img = section.img.one() %}
+
+<section class="section">
+    <div class="container grid md:grid-cols-2 gap-2 md:gap-4 items-center">
+        <div>
+            {% if img %}
+                {% include "_components/img/img-half" with { img: img } %}
+            {% endif %}
+        </div>
+        <div class="{{ section.switch ? '-order-1' : '' }}">
+            {% include "_components/title" with { title: section.title } %}
+            <div>{{ section.ckeSimple }}</div>
+            {% if section.linkField %}
+                {% include "_components/link" with { linkField: section.linkField, btnStyle: true, extraClass: "mt-2" } %}
+            {% endif %}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,21 @@
+.cke {
+    p {
+        @apply mt-2;
+    }
+
+    ul, ol {
+        @apply ml-2 my-1
+    }
+
+    ul li {
+        @apply list-disc
+    }
+
+    ol li {
+        @apply list-decimal
+    }
+
+    .image {
+        @apply my-2
+    }
+}

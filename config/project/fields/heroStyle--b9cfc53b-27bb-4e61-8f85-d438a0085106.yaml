@@ -1,0 +1,40 @@
+columnSuffix: null
+handle: heroStyle
+instructions: null
+name: 'Hero stijl'
+searchable: false
+settings:
+  customOptions: false
+  iconsOnly: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - Primair
+        -
+          - value
+          - prim
+        -
+          - icon
+          - ''
+        -
+          - default
+          - '1'
+    -
+      __assoc__:
+        -
+          - label
+          - Secundair
+        -
+          - value
+          - sec
+        -
+          - icon
+          - ''
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\ButtonGroup

@@ -1,0 +1,41 @@
+columnSuffix: null
+handle: filePrivate
+instructions: null
+name: 'Bestand privaat'
+searchable: false
+settings:
+  allowSelfRelations: false
+  allowSubfolders: false
+  allowUploads: true
+  allowedKinds:
+    - excel
+    - pdf
+    - powerpoint
+    - word
+  branchLimit: null
+  defaultPlacement: end
+  defaultUploadLocationSource: 'volume:f05d803c-2108-4feb-aeef-f027ceb79259' # Bestanden privaat
+  defaultUploadLocationSubpath: '{ rootOwner.section ?? owner.owner.section ?? entry.section  }'
+  maintainHierarchy: false
+  maxRelations: 1
+  minRelations: null
+  previewMode: full
+  restrictFiles: true
+  restrictLocation: false
+  restrictedDefaultUploadSubpath: null
+  restrictedLocationSource: 'volume:21bdbefb-8c0d-4c59-a882-513e50af4f07' # Images
+  restrictedLocationSubpath: null
+  selectionLabel: null
+  showCardsInGrid: false
+  showSearchInput: true
+  showSiteMenu: true
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  sources:
+    - 'volume:f05d803c-2108-4feb-aeef-f027ceb79259' # Bestanden privaat
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: list
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Assets

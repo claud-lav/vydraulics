@@ -1,0 +1,99 @@
+allowLineBreaksInTitles: false
+color: null
+description: null
+fieldLayouts:
+  10cc74f4-601b-4eb1-9a44-ebe6f92ed63e:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2026-03-06T13:33:09+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: a2bdaa74-25cb-4674-8d93-aaa8a7232cd9
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 421ee481-525e-4697-a409-507882c17121
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-03-06T13:35:09+00:00'
+            elementCondition: null
+            heading: ''
+            type: craft\fieldlayoutelements\Heading
+            uid: 1c2754e2-3a10-4a9a-9e93-60a971aa2668
+            userCondition: null
+          -
+            dateAdded: '2026-03-06T13:35:09+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: af908524-48f4-4030-b6b5-619ff14bacdc # Boolean
+            handle: headNav
+            instructions: null
+            label: 'Tonen in navigatie'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0c559272-117d-41ad-af2d-158a5783efde
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-06T14:00:29+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: af908524-48f4-4030-b6b5-619ff14bacdc # Boolean
+            handle: subHeadNav
+            instructions: null
+            label: 'Tonen in subnavigatie'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c780bd0c-8cd8-4f25-ab3a-decb1c2bc7e9
+            userCondition: null
+            warning: null
+            width: 100
+        name: Instellingen
+        uid: 2358b483-6f18-4de4-bb13-846e907db716
+        userCondition: null
+    thumbFieldKey: null
+handle: dropdownLabel
+hasTitleField: true
+icon: tag
+name: 'Dropdown Label'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

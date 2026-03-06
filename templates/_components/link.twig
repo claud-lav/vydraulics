@@ -1,0 +1,21 @@
+{% set linkField = linkField ?? null %}
+{% set extraClass = extraClass ?? null %}
+
+{% set url = url ?? (linkField ? linkField.url : null) %}
+{% set ariaLabel = ariaLabel ?? (linkField ? linkField.label : null) %}
+{% set target = target ?? (linkField ? linkField.target : null) %}
+{% set label = label ?? (linkField ? linkField.label : null) %}
+
+{% set btnStyle = btnStyle ?? false %}
+{% set darkBg = darkBg ?? false %}
+{% set noLink = noLink ?? null %}
+
+{% if noLink %}
+    <div class="group transition  w-fit {{ extraClass }} {{ btnStyle ? 'border border-prim rounded-full px-1.5 py-0.75 hover:bg-prim hover:rounded-[10px]' : 'border-b border-b-prim pb-0.5'}} {{ darkBg ? 'text-white' }} flex gap-0.5 items-center">
+        <span>{{ label }}</span>
+    </div>
+{% else %}
+    <a href="{{ url }}" class="group transition w-fit {{extraClass }} {{ btnStyle ? 'border border-prim rounded-full px-1.5 py-0.75 hover:bg-prim' : 'border-b border-b-prim pb-0 h-2.75'}} {{ darkBg ? 'text-white' }} flex gap-0.5 items-center" aria-label="{{ ariaLabel }}" target="{{ target ?? '' }}">
+        {{ label }}
+    </a>
+{% endif %}

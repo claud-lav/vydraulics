@@ -1,0 +1,16 @@
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    content: none;
+}
+
+.swiper-pagination {
+    @apply flex flex-row gap-0.25;
+}
+
+.swiper-pagination-bullet {
+    @apply block h-0.75 w-0.75 rounded-full bg-black/30;
+
+    &-active {
+        @apply bg-prim
+    }
+}

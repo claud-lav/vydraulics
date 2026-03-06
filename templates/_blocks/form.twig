@@ -1,0 +1,10 @@
+{% set form = section.form.one() %}
+
+<section class="section">
+    <div class="container">
+        {% include "_components/title" with { title: section.title } %}
+        {% if form %}
+            {{ craft.formie.renderForm(form)}} 
+        {% endif %}
+    </div>
+</section>

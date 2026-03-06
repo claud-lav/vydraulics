@@ -1,0 +1,7 @@
+.container {
+    @apply w-[90%] px-4 max-w-reg;
+}
+
+.container-small {
+    @apply max-w-small;
+}

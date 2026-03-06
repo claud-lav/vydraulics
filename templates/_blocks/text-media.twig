@@ -1,0 +1,3 @@
+{% if section.typeTextMedia.value %}
+    {% include "_blocks/text-media/text-media-" ~ section.typeTextMedia.value|kebab %}
+{% endif %}

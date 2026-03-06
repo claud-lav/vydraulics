@@ -1,0 +1,21 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: 7ba66ae6-8f74-4654-bf31-85557659bb59 # Content builder
+handle: reusableBlocks
+maxAuthors: 1
+name: 'Herbruikbare blokken'
+previewTargets:
+  -
+    label: 'Primary entry page'
+    refresh: '1'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  19c6391b-a582-4651-b999-d4761e7a122c: # vydraulics
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: null
+type: channel

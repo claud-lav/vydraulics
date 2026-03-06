@@ -1,0 +1,86 @@
+/**
+ * SlugRefresh styles
+ */
+
+.slug-refresh-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    margin-left: 8px;
+    padding: 0;
+    border: 1px solid #cdd8e4;
+    border-radius: 4px;
+    background: #fff;
+    color: #596673;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    vertical-align: middle;
+}
+
+.slug-refresh-btn:hover {
+    border-color: #8f98a3;
+    background: #f9fafb;
+    color: #3f4d5a;
+}
+
+.slug-refresh-btn:active {
+    background: #f3f5f7;
+}
+
+.slug-refresh-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.slug-refresh-btn.loading svg {
+    animation: slug-refresh-spin 0.8s linear infinite;
+}
+
+@keyframes slug-refresh-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Ensure the button sits nicely next to the input */
+.input > .slug-refresh-btn {
+    flex-shrink: 0;
+}
+
+/* Index page styles */
+.slug-index-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.slug-refresh-btn-inline {
+    width: 24px;
+    height: 24px;
+    margin-left: 0;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+td[data-attr="slug"]:hover .slug-refresh-btn-inline {
+    opacity: 1;
+}
+
+.slug-refresh-btn-inline svg {
+    width: 12px;
+    height: 12px;
+}
+
+/* Toolbar button styles */
+.slug-refresh-toolbar-btn {
+    white-space: nowrap;
+}
+
+.slug-refresh-toolbar-btn .icon {
+    margin-right: 5px;
+}

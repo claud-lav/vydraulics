@@ -1,0 +1,9 @@
+<section class="section">
+    <div class="container">
+        {% include "_components/title" with { title: section.title } %}
+        <div>
+            {{ section.ckeSimple }}
+        </div>
+        {% include "_components/link" with { linkField: section.linkField, btnStyle: true, extraClass: 'mt-2' } %}
+    </div>
+</section>

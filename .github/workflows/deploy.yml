@@ -1,0 +1,445 @@
+# ╔══════════════════════════════════════════════════════════════════╗
+# ║         Craft CMS Auto-Deployment via GitHub Actions           ║
+# ╚══════════════════════════════════════════════════════════════════╝
+#
+# Deploys code via rsync - no git needed on the server.
+# Frontend assets are built on the runner and synced separately.
+#
+# ──────────────────────────────────────────────────────────────────
+# HOW IT WORKS
+# ──────────────────────────────────────────────────────────────────
+#
+#   Push to "staging" branch    →  deploys to STAGING
+#   Push to "production" branch →  deploys to PRODUCTION
+#   Manual trigger          →  choose staging or production
+#
+#   The pipeline will:
+#    1. Build frontend assets (npm ci && npm run build)
+#    2. Connect to server via SSH (with connection multiplexing)
+#    3. Create project directories if they don't exist
+#    4. Enable maintenance mode (php craft off)
+#    5. Sync .env file (always overwritten from GitHub secret)
+#    6. Rsync code to server (excluding .env, vendor, uploads, storage)
+#    7. Rsync built assets (web/dist/) separately
+#    8. Rsync rebrand assets (storage/rebrand/) if present
+#    9. Run composer install (only when composer.json/lock changed)
+#   10. Run Craft migrations & project config sync (php craft up)
+#   11. Clear caches and bring site back online (php craft on)
+#   12. (Production only) Update ~/www symlink
+#
+# ──────────────────────────────────────────────────────────────────
+# FIRST-TIME SETUP
+# ──────────────────────────────────────────────────────────────────
+#
+#   1. Fill in .github/secrets.env with SSH connection values
+#   2. Paste SSH private key into .github/deploy-key
+#   3. Fill in .env.example.staging and .env.example.production
+#   4. Push all secrets to GitHub:
+#
+#        gh secret set -f .github/secrets.env
+#        gh secret set DEPLOY < .github/deploy-key
+#        gh secret set STAGING_ENV_FILE < .env.example.staging
+#        gh secret set PRODUCTION_ENV_FILE < .env.example.production
+#
+#   5. Push code to trigger a deploy
+#   6. SSH to server and set up cron job:
+#        crontab --edit
+#        * * * * * /usr/bin/php /path/to/project/craft queue/run --interactive=0 > /dev/null 2>&1
+#
+# ──────────────────────────────────────────────────────────────────
+# REQUIRED GITHUB SECRETS
+# ──────────────────────────────────────────────────────────────────
+#
+#   | Secret                  | Description                                  |
+#   |-------------------------|----------------------------------------------|
+#   | DEPLOY                  | Private SSH key for server access             |
+#   | STAGING_SSH_HOST        | Staging server hostname                      |
+#   | STAGING_SSH_USER        | Staging SSH username                         |
+#   | STAGING_PROJECT_PATH    | Absolute path to project on staging server   |
+#   | STAGING_ENV_FILE        | Complete .env file contents for staging      |
+#   | PRODUCTION_SSH_HOST     | Production server hostname                   |
+#   | PRODUCTION_SSH_USER     | Production SSH username                      |
+#   | PRODUCTION_PROJECT_PATH | Absolute path to project on production       |
+#   | PRODUCTION_ENV_FILE     | Complete .env file contents for production   |
+#
+# ──────────────────────────────────────────────────────────────────
+# MANAGING .ENV ON THE SERVER
+# ──────────────────────────────────────────────────────────────────
+#
+#   Every deploy OVERWRITES the server .env with the GitHub secret.
+#
+#   To update .env values:
+#     1. Edit .env.example.staging or .env.example.production locally
+#     2. Push the updated file to GitHub secrets:
+#          gh secret set STAGING_ENV_FILE < .env.example.staging
+#          gh secret set PRODUCTION_ENV_FILE < .env.example.production
+#     3. Redeploy (push or manual trigger)
+#
+# ──────────────────────────────────────────────────────────────────
+# OTHER OPERATIONS (run locally, not part of pipeline)
+# ──────────────────────────────────────────────────────────────────
+#
+#   npm run db:pull         Pull database FROM server to local
+#   npm run db:push         Push database TO server
+#   npm run uploads:sync    Sync uploads between local and server
+#
+# ──────────────────────────────────────────────────────────────────
+# TROUBLESHOOTING
+# ──────────────────────────────────────────────────────────────────
+#
+#   SSH fails?          → Check DEPLOY key + SSH_HOST/SSH_USER
+#   Composer fails?     → SSH in, check PHP 8.2+, run manually
+#   "php craft up" fails? → Check .env DB credentials on server
+#   Site shows 503?     → SSH in and run: php craft on
+#   Redeploy needed?    → Actions tab → Run workflow
+
+name: Deploy Craft CMS
+
+on:
+  push:
+    branches:
+      - production
+      - staging
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Environment to deploy to"
+        required: true
+        default: "staging"
+        type: choice
+        options:
+          - staging
+          - production
+
+env:
+  PHP_VERSION: "8.2"
+
+jobs:
+  deploy-staging:
+    name: Deploy to Staging
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/staging' || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'staging')
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Check for composer changes
+        id: changes
+        run: |
+          BEFORE="${{ github.event.before }}"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            echo "composer=true" >> $GITHUB_OUTPUT
+          else
+            if git diff --name-only "$BEFORE" HEAD | grep -qE '^composer\.(json|lock)$'; then
+              echo "composer=true" >> $GITHUB_OUTPUT
+              echo "📦 Composer files changed"
+            else
+              echo "composer=false" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies and build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Setup SSH with connection multiplexing
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.STAGING_SSH_HOST }} >> ~/.ssh/known_hosts
+          printf '%s\n' "Host *" "  ControlMaster auto" "  ControlPath ~/.ssh/ctrl-%C" "  ControlPersist 10m" >> ~/.ssh/config
+
+      - name: Prepare server
+        run: |
+          ssh ${{ secrets.STAGING_SSH_USER }}@${{ secrets.STAGING_SSH_HOST }} << 'PREPSSH'
+          PROJECT="${{ secrets.STAGING_PROJECT_PATH }}"
+          mkdir -p "$PROJECT" "$PROJECT/storage" "$PROJECT/web/uploads" "$PROJECT/web/cpresources"
+
+          # Remove git directory if it exists (we use rsync, not git on server)
+          rm -rf "$PROJECT/.git" 2>/dev/null || true
+
+          # Enable maintenance mode
+          cd "$PROJECT" && php craft off --retry 60 2>/dev/null || true
+
+          echo "🔧 Server prepared for deployment"
+          PREPSSH
+
+      - name: Sync .env on server
+        env:
+          ENV_FILE: ${{ secrets.STAGING_ENV_FILE }}
+        run: |
+          SERVER="${{ secrets.STAGING_SSH_USER }}@${{ secrets.STAGING_SSH_HOST }}"
+          PROJECT="${{ secrets.STAGING_PROJECT_PATH }}"
+          printf '%s\n' "$ENV_FILE" > /tmp/.env.new
+          scp /tmp/.env.new "$SERVER:$PROJECT/.env"
+          rm -f /tmp/.env.new
+          echo "📝 .env overwritten from secret"
+
+      - name: Deploy code to server
+        run: |
+          rsync -rlptz --delete \
+            --exclude='.env' \
+            --exclude='node_modules/' \
+            --exclude='.git/' \
+            --exclude='vendor/' \
+            --exclude='storage/' \
+            --exclude='web/dist/' \
+            --exclude='web/uploads/' \
+            --exclude='web/cpresources/' \
+            --exclude='web/imager/' \
+            ./ ${{ secrets.STAGING_SSH_USER }}@${{ secrets.STAGING_SSH_HOST }}:${{ secrets.STAGING_PROJECT_PATH }}/
+
+      - name: Deploy built assets
+        run: |
+          rsync -rlptz --delete ./web/dist/ ${{ secrets.STAGING_SSH_USER }}@${{ secrets.STAGING_SSH_HOST }}:${{ secrets.STAGING_PROJECT_PATH }}/web/dist/
+
+      - name: Deploy rebrand assets (login logo, site icon)
+        run: |
+          if [ ! -d "./storage/rebrand" ] || [ -z "$(ls -A ./storage/rebrand 2>/dev/null)" ]; then
+            echo "⏭️ No rebrand assets in repo - skipping"
+            exit 0
+          fi
+
+          FILE_COUNT=$(ssh ${{ secrets.STAGING_SSH_USER }}@${{ secrets.STAGING_SSH_HOST }} "find ${{ secrets.STAGING_PROJECT_PATH }}/storage/rebrand -type f 2>/dev/null | wc -l")
+          if [ "$FILE_COUNT" -gt 0 ]; then
+            echo "⏭️ Rebrand assets already present on server ($FILE_COUNT files) - skipping"
+          else
+            ssh ${{ secrets.STAGING_SSH_USER }}@${{ secrets.STAGING_SSH_HOST }} "mkdir -p ${{ secrets.STAGING_PROJECT_PATH }}/storage/rebrand"
+            rsync -rlptz ./storage/rebrand/ ${{ secrets.STAGING_SSH_USER }}@${{ secrets.STAGING_SSH_HOST }}:${{ secrets.STAGING_PROJECT_PATH }}/storage/rebrand/
+            echo "✅ Rebrand assets deployed"
+          fi
+
+      - name: Finalize deployment
+        run: |
+          ssh ${{ secrets.STAGING_SSH_USER }}@${{ secrets.STAGING_SSH_HOST }} << 'FINALSSH'
+          cd ${{ secrets.STAGING_PROJECT_PATH }}
+
+          # Install composer dependencies (always on first deploy, or when composer files changed)
+          if [ ! -d "vendor" ] || [ "${{ steps.changes.outputs.composer }}" = "true" ]; then
+            echo "📦 Running composer install..."
+            composer install --no-interaction --no-dev --optimize-autoloader
+            if [ -d "modules" ]; then
+              composer dump-autoload
+            fi
+          else
+            echo "⏭️ No composer changes - skipping composer install"
+          fi
+
+          # Run Craft migrations and project config sync
+          php craft up --interactive=0
+
+          # Clear all caches
+          php craft clear-caches/all
+
+          # Bring site back online
+          php craft on
+
+          # Verify cron job
+          if crontab --list 2>/dev/null | grep -q "craft queue/run"; then
+            echo "✅ Craft queue cron job is configured"
+          else
+            echo "::warning::Craft queue cron job is NOT configured! SSH to server and run: crontab --edit"
+            echo "Add: * * * * * /usr/bin/php ${{ secrets.STAGING_PROJECT_PATH }}/craft queue/run --interactive=0 > /dev/null 2>&1"
+          fi
+
+          echo "✅ Staging deployment complete!"
+          FINALSSH
+
+  deploy-production:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/production' || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'production')
+
+    steps:
+      - name: Check if production credentials are configured
+        id: check-credentials
+        run: |
+          if [ -z "${{ secrets.PRODUCTION_SSH_HOST }}" ]; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+            echo "⚠️ Production credentials not configured - skipping deployment"
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+            echo "✅ Production credentials found"
+          fi
+
+      - name: Skip notice
+        if: steps.check-credentials.outputs.skip == 'true'
+        run: |
+          echo "::warning::Production deployment skipped - PRODUCTION_SSH_HOST not configured"
+          echo "To enable production deployments, add the production secrets in GitHub repository settings."
+
+      - name: Checkout code
+        if: steps.check-credentials.outputs.skip != 'true'
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Check for composer changes
+        if: steps.check-credentials.outputs.skip != 'true'
+        id: changes
+        run: |
+          BEFORE="${{ github.event.before }}"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            echo "composer=true" >> $GITHUB_OUTPUT
+          else
+            if git diff --name-only "$BEFORE" HEAD | grep -qE '^composer\.(json|lock)$'; then
+              echo "composer=true" >> $GITHUB_OUTPUT
+              echo "📦 Composer files changed"
+            else
+              echo "composer=false" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+      - name: Setup Node.js
+        if: steps.check-credentials.outputs.skip != 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies and build
+        if: steps.check-credentials.outputs.skip != 'true'
+        run: |
+          npm ci
+          npm run build
+
+      - name: Setup SSH with connection multiplexing
+        if: steps.check-credentials.outputs.skip != 'true'
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.PRODUCTION_SSH_HOST }} >> ~/.ssh/known_hosts
+          printf '%s\n' "Host *" "  ControlMaster auto" "  ControlPath ~/.ssh/ctrl-%C" "  ControlPersist 10m" >> ~/.ssh/config
+
+      - name: Prepare server
+        if: steps.check-credentials.outputs.skip != 'true'
+        run: |
+          ssh ${{ secrets.PRODUCTION_SSH_USER }}@${{ secrets.PRODUCTION_SSH_HOST }} << 'PREPSSH'
+          PROJECT="${{ secrets.PRODUCTION_PROJECT_PATH }}"
+          mkdir -p "$PROJECT" "$PROJECT/storage" "$PROJECT/web/uploads" "$PROJECT/web/cpresources"
+
+          # Remove git directory if it exists (we use rsync, not git on server)
+          rm -rf "$PROJECT/.git" 2>/dev/null || true
+
+          # Enable maintenance mode
+          cd "$PROJECT" && php craft off --retry 60 2>/dev/null || true
+
+          echo "🔧 Server prepared for deployment"
+          PREPSSH
+
+      - name: Sync .env on server
+        if: steps.check-credentials.outputs.skip != 'true'
+        env:
+          ENV_FILE: ${{ secrets.PRODUCTION_ENV_FILE }}
+        run: |
+          SERVER="${{ secrets.PRODUCTION_SSH_USER }}@${{ secrets.PRODUCTION_SSH_HOST }}"
+          PROJECT="${{ secrets.PRODUCTION_PROJECT_PATH }}"
+          printf '%s\n' "$ENV_FILE" > /tmp/.env.new
+          scp /tmp/.env.new "$SERVER:$PROJECT/.env"
+          rm -f /tmp/.env.new
+          echo "📝 .env overwritten from secret"
+
+      - name: Deploy code to server
+        if: steps.check-credentials.outputs.skip != 'true'
+        run: |
+          rsync -rlptz --delete \
+            --exclude='.env' \
+            --exclude='node_modules/' \
+            --exclude='.git/' \
+            --exclude='vendor/' \
+            --exclude='storage/' \
+            --exclude='web/dist/' \
+            --exclude='web/uploads/' \
+            --exclude='web/cpresources/' \
+            --exclude='web/imager/' \
+            ./ ${{ secrets.PRODUCTION_SSH_USER }}@${{ secrets.PRODUCTION_SSH_HOST }}:${{ secrets.PRODUCTION_PROJECT_PATH }}/
+
+      - name: Deploy built assets
+        if: steps.check-credentials.outputs.skip != 'true'
+        run: |
+          rsync -rlptz --delete ./web/dist/ ${{ secrets.PRODUCTION_SSH_USER }}@${{ secrets.PRODUCTION_SSH_HOST }}:${{ secrets.PRODUCTION_PROJECT_PATH }}/web/dist/
+
+      - name: Deploy rebrand assets (login logo, site icon)
+        if: steps.check-credentials.outputs.skip != 'true'
+        run: |
+          if [ ! -d "./storage/rebrand" ] || [ -z "$(ls -A ./storage/rebrand 2>/dev/null)" ]; then
+            echo "⏭️ No rebrand assets in repo - skipping"
+            exit 0
+          fi
+
+          FILE_COUNT=$(ssh ${{ secrets.PRODUCTION_SSH_USER }}@${{ secrets.PRODUCTION_SSH_HOST }} "find ${{ secrets.PRODUCTION_PROJECT_PATH }}/storage/rebrand -type f 2>/dev/null | wc -l")
+          if [ "$FILE_COUNT" -gt 0 ]; then
+            echo "⏭️ Rebrand assets already present on server ($FILE_COUNT files) - skipping"
+          else
+            ssh ${{ secrets.PRODUCTION_SSH_USER }}@${{ secrets.PRODUCTION_SSH_HOST }} "mkdir -p ${{ secrets.PRODUCTION_PROJECT_PATH }}/storage/rebrand"
+            rsync -rlptz ./storage/rebrand/ ${{ secrets.PRODUCTION_SSH_USER }}@${{ secrets.PRODUCTION_SSH_HOST }}:${{ secrets.PRODUCTION_PROJECT_PATH }}/storage/rebrand/
+            echo "✅ Rebrand assets deployed"
+          fi
+
+      - name: Finalize deployment
+        if: steps.check-credentials.outputs.skip != 'true'
+        run: |
+          ssh ${{ secrets.PRODUCTION_SSH_USER }}@${{ secrets.PRODUCTION_SSH_HOST }} << 'FINALSSH'
+          cd ${{ secrets.PRODUCTION_PROJECT_PATH }}
+
+          # Install composer dependencies (always on first deploy, or when composer files changed)
+          if [ ! -d "vendor" ] || [ "${{ steps.changes.outputs.composer }}" = "true" ]; then
+            echo "📦 Running composer install..."
+            composer install --no-interaction --no-dev --optimize-autoloader
+            if [ -d "modules" ]; then
+              composer dump-autoload
+            fi
+          else
+            echo "⏭️ No composer changes - skipping composer install"
+          fi
+
+          # Run Craft migrations and project config sync
+          php craft up --interactive=0
+
+          # Clear all caches
+          php craft clear-caches/all
+
+          # Bring site back online
+          php craft on
+
+          # Update www symlink if needed
+          TARGET="${{ secrets.PRODUCTION_PROJECT_PATH }}/web"
+          if [ -L ~/www ]; then
+            CURRENT=$(readlink ~/www)
+            if [ "$CURRENT" = "$TARGET" ]; then
+              echo "⏭️ www symlink already points to $TARGET - skipping"
+            else
+              ln -sfn "$TARGET" ~/www
+              echo "🔗 www symlink updated → $TARGET (was $CURRENT)"
+            fi
+          elif [ -d ~/www ]; then
+            rm -rf ~/www
+            ln -sfn "$TARGET" ~/www
+            echo "🔗 Replaced www directory with symlink → $TARGET"
+          else
+            ln -sfn "$TARGET" ~/www
+            echo "🔗 www symlink created → $TARGET"
+          fi
+
+          # Verify cron job
+          if crontab --list 2>/dev/null | grep -q "craft queue/run"; then
+            echo "✅ Craft queue cron job is configured"
+          else
+            echo "::warning::Craft queue cron job is NOT configured! SSH to server and run: crontab --edit"
+            echo "Add: * * * * * /usr/bin/php ${{ secrets.PRODUCTION_PROJECT_PATH }}/craft queue/run --interactive=0 > /dev/null 2>&1"
+          fi
+
+          echo "✅ Production deployment complete!"
+          FINALSSH

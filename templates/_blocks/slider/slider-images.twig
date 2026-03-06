@@ -1,0 +1,26 @@
+{% set images = section.imgs.all() %}
+
+<section class="section">
+    <div class="container images-slider" data-swiper-placeholder>
+        {% include "_components/title" with { title: section.title } %}
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                {% for item in images %}
+                    <div class="w-full aspect-square swiper-slide">
+                        {% include "_components/img/img-fourth" with {
+                            img: item, 
+                            extraClass: 'h-full w-full object-cover'
+                        } %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="flex flex-row justify-between mt-0.5">
+            <div class="swiper-pagination"></div>
+            <div class="flex flex-row gap-1 justify-end">
+                <button type="button" class="swiper-button-prev">{{ 'vorige'|t }}</button>
+                <button type="button" class="swiper-button-next">{{ 'volgende'|t }}</button>
+            </div>
+        </div>
+    </div>
+</section>

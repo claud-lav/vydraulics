@@ -1,0 +1,70 @@
+/* Pas aan met je fonts van het deisgn */
+@import url("https://use.typekit.net/qhq2bqe.css");
+
+@font-face {
+    font-family: "Helvena";
+    src: url("/assets/fonts/Helvena-Extralight.woff2") format("woff2"), url("/assets/fonts/Helvena-Extralight.woff") format("woff");
+    font-style: normal;
+    font-weight: 200;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Helvena";
+    src: url("/assets/fonts/Helvena-Light.woff2") format("woff2"), url("/assets/fonts/Helvena-Light.woff") format("woff");
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Helvena";
+    src: url("/assets/fonts/Helvena-Regular.woff2") format("woff2"), url("/assets/fonts/Helvena-Regular.woff") format("woff");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Helvena";
+    src: url("/assets/fonts/Helvena-Medium.woff2") format("woff2"), url("/assets/fonts/Helvena-Medium.woff") format("woff");
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Helvena";
+    src: url("/assets/fonts/Helvena-Semibold.woff2") format("woff2"), url("/assets/fonts/Helvena-Semibold.woff") format("woff");
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Helvena";
+    src: url("/assets/fonts/Helvena-Bold.woff2") format("woff2"), url("/assets/fonts/Helvena-Bold.woff") format("woff");
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Helvena";
+    src: url("/assets/fonts/Helvena-Extrabold.woff2") format("woff2"), url("/assets/fonts/Helvena-Extrabold.woff") format("woff");
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Helvena";
+    src: url("/assets/fonts/Helvena-Black.woff2") format("woff2"), url("/assets/fonts/Helvena-Black.woff") format("woff");
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+}
+
+:where(body, button, input, textarea) {
+    font-synthesis: none;
+}

@@ -1,0 +1,128 @@
+description: null
+handle: klantSeo
+name: 'Klant SEO'
+permissions:
+  - accesscp
+  - accessplugin-formie
+  - accessplugin-seomatic
+  - accesssitewhensystemisoff
+  - 'createentries:83e21b02-216d-4f8e-ad37-891602724017' # Herbruikbare blokken
+  - 'createentries:d7a579e5-8da4-4e95-aaea-8c7a35a1123f' # Pagina's
+  - 'createfolders:21bdbefb-8c0d-4c59-a882-513e50af4f07' # Images
+  - 'createfolders:a11a6090-1726-4b54-8d4c-452b8a10527b' # Bestanden
+  - 'createfolders:b8548411-9aed-4a77-8336-5215cab501c2' # Videos
+  - 'createfolders:cde186b0-5b45-468d-a51b-3d59e0f95553'
+  - 'createfolders:f78d7b04-49b9-42bc-a2d9-0fa1bcac226c' # Grafisch
+  - 'deleteassets:21bdbefb-8c0d-4c59-a882-513e50af4f07' # Images
+  - 'deleteassets:a11a6090-1726-4b54-8d4c-452b8a10527b' # Bestanden
+  - 'deleteassets:b8548411-9aed-4a77-8336-5215cab501c2' # Videos
+  - 'deleteassets:cde186b0-5b45-468d-a51b-3d59e0f95553'
+  - 'deleteassets:f78d7b04-49b9-42bc-a2d9-0fa1bcac226c' # Grafisch
+  - 'deleteentries:83e21b02-216d-4f8e-ad37-891602724017' # Herbruikbare blokken
+  - 'deleteentries:d7a579e5-8da4-4e95-aaea-8c7a35a1123f' # Pagina's
+  - 'deletepeerassets:21bdbefb-8c0d-4c59-a882-513e50af4f07' # Images
+  - 'deletepeerassets:a11a6090-1726-4b54-8d4c-452b8a10527b' # Bestanden
+  - 'deletepeerassets:b8548411-9aed-4a77-8336-5215cab501c2' # Videos
+  - 'deletepeerassets:cde186b0-5b45-468d-a51b-3d59e0f95553'
+  - 'deletepeerassets:f78d7b04-49b9-42bc-a2d9-0fa1bcac226c' # Grafisch
+  - 'deletepeerentries:83e21b02-216d-4f8e-ad37-891602724017' # Herbruikbare blokken
+  - 'deletepeerentries:d7a579e5-8da4-4e95-aaea-8c7a35a1123f' # Pagina's
+  - 'editimages:21bdbefb-8c0d-4c59-a882-513e50af4f07' # Images
+  - 'editimages:a11a6090-1726-4b54-8d4c-452b8a10527b' # Bestanden
+  - 'editimages:b8548411-9aed-4a77-8336-5215cab501c2' # Videos
+  - 'editimages:cde186b0-5b45-468d-a51b-3d59e0f95553'
+  - 'editimages:f78d7b04-49b9-42bc-a2d9-0fa1bcac226c' # Grafisch
+  - 'editpeerimages:21bdbefb-8c0d-4c59-a882-513e50af4f07' # Images
+  - 'editpeerimages:a11a6090-1726-4b54-8d4c-452b8a10527b' # Bestanden
+  - 'editpeerimages:b8548411-9aed-4a77-8336-5215cab501c2' # Videos
+  - 'editpeerimages:cde186b0-5b45-468d-a51b-3d59e0f95553'
+  - 'editpeerimages:f78d7b04-49b9-42bc-a2d9-0fa1bcac226c' # Grafisch
+  - formie-accesssentnotifications
+  - formie-accesssubmissions
+  - formie-viewsentnotifications
+  - formie-viewsubmissions
+  - 'replacefiles:21bdbefb-8c0d-4c59-a882-513e50af4f07' # Images
+  - 'replacefiles:a11a6090-1726-4b54-8d4c-452b8a10527b' # Bestanden
+  - 'replacefiles:b8548411-9aed-4a77-8336-5215cab501c2' # Videos
+  - 'replacefiles:cde186b0-5b45-468d-a51b-3d59e0f95553'
+  - 'replacefiles:f78d7b04-49b9-42bc-a2d9-0fa1bcac226c' # Grafisch
+  - 'replacepeerfiles:21bdbefb-8c0d-4c59-a882-513e50af4f07' # Images
+  - 'replacepeerfiles:a11a6090-1726-4b54-8d4c-452b8a10527b' # Bestanden
+  - 'replacepeerfiles:b8548411-9aed-4a77-8336-5215cab501c2' # Videos
+  - 'replacepeerfiles:cde186b0-5b45-468d-a51b-3d59e0f95553'
+  - 'replacepeerfiles:f78d7b04-49b9-42bc-a2d9-0fa1bcac226c' # Grafisch
+  - 'saveassets:21bdbefb-8c0d-4c59-a882-513e50af4f07' # Images
+  - 'saveassets:a11a6090-1726-4b54-8d4c-452b8a10527b' # Bestanden
+  - 'saveassets:b8548411-9aed-4a77-8336-5215cab501c2' # Videos
+  - 'saveassets:cde186b0-5b45-468d-a51b-3d59e0f95553'
+  - 'saveassets:f78d7b04-49b9-42bc-a2d9-0fa1bcac226c' # Grafisch
+  - 'saveentries:10fa1a6d-9eae-450d-afe2-07914cf42d54' # Bedrijfsgegevens
+  - 'saveentries:50c7d6c4-07af-4aea-b86a-78d535b81ae4' # Home
+  - 'saveentries:83e21b02-216d-4f8e-ad37-891602724017' # Herbruikbare blokken
+  - 'saveentries:b2150467-5909-43c9-b0bf-24c286b78544' # 404
+  - 'saveentries:d7a579e5-8da4-4e95-aaea-8c7a35a1123f' # Pagina's
+  - 'savepeerassets:21bdbefb-8c0d-4c59-a882-513e50af4f07' # Images
+  - 'savepeerassets:a11a6090-1726-4b54-8d4c-452b8a10527b' # Bestanden
+  - 'savepeerassets:b8548411-9aed-4a77-8336-5215cab501c2' # Videos
+  - 'savepeerassets:cde186b0-5b45-468d-a51b-3d59e0f95553'
+  - 'savepeerassets:f78d7b04-49b9-42bc-a2d9-0fa1bcac226c' # Grafisch
+  - 'savepeerentries:83e21b02-216d-4f8e-ad37-891602724017' # Herbruikbare blokken
+  - 'savepeerentries:d7a579e5-8da4-4e95-aaea-8c7a35a1123f' # Pagina's
+  - 'savepeerentrydrafts:10fa1a6d-9eae-450d-afe2-07914cf42d54' # Bedrijfsgegevens
+  - 'savepeerentrydrafts:50c7d6c4-07af-4aea-b86a-78d535b81ae4' # Home
+  - 'savepeerentrydrafts:83e21b02-216d-4f8e-ad37-891602724017' # Herbruikbare blokken
+  - 'savepeerentrydrafts:b2150467-5909-43c9-b0bf-24c286b78544' # 404
+  - 'savepeerentrydrafts:d7a579e5-8da4-4e95-aaea-8c7a35a1123f' # Pagina's
+  - 'seomatic:content-meta'
+  - 'seomatic:content-meta:facebook'
+  - 'seomatic:content-meta:general'
+  - 'seomatic:content-meta:sitemap'
+  - 'seomatic:content-meta:twitter'
+  - 'seomatic:dashboard'
+  - 'seomatic:global-meta'
+  - 'seomatic:global-meta:ads'
+  - 'seomatic:global-meta:facebook'
+  - 'seomatic:global-meta:general'
+  - 'seomatic:global-meta:humans'
+  - 'seomatic:global-meta:robots'
+  - 'seomatic:global-meta:security'
+  - 'seomatic:global-meta:twitter'
+  - 'seomatic:site-settings'
+  - 'seomatic:site-settings:creator'
+  - 'seomatic:site-settings:identity'
+  - 'seomatic:site-settings:miscellaneous'
+  - 'seomatic:site-settings:sitemap'
+  - 'seomatic:site-settings:social'
+  - 'seomatic:tracking-scripts'
+  - 'seomatic:tracking-scripts:facebookpixel'
+  - 'seomatic:tracking-scripts:fathom'
+  - 'seomatic:tracking-scripts:googleanalytics'
+  - 'seomatic:tracking-scripts:googletagmanager'
+  - 'seomatic:tracking-scripts:gtag'
+  - 'seomatic:tracking-scripts:hubspot'
+  - 'seomatic:tracking-scripts:linkedininsight'
+  - 'seomatic:tracking-scripts:matomo'
+  - 'seomatic:tracking-scripts:pinteresttag'
+  - 'seomatic:tracking-scripts:plausible'
+  - 'viewassets:21bdbefb-8c0d-4c59-a882-513e50af4f07' # Images
+  - 'viewassets:a11a6090-1726-4b54-8d4c-452b8a10527b' # Bestanden
+  - 'viewassets:b8548411-9aed-4a77-8336-5215cab501c2' # Videos
+  - 'viewassets:cde186b0-5b45-468d-a51b-3d59e0f95553'
+  - 'viewassets:f78d7b04-49b9-42bc-a2d9-0fa1bcac226c' # Grafisch
+  - 'viewentries:10fa1a6d-9eae-450d-afe2-07914cf42d54' # Bedrijfsgegevens
+  - 'viewentries:50c7d6c4-07af-4aea-b86a-78d535b81ae4' # Home
+  - 'viewentries:83e21b02-216d-4f8e-ad37-891602724017' # Herbruikbare blokken
+  - 'viewentries:b2150467-5909-43c9-b0bf-24c286b78544' # 404
+  - 'viewentries:d7a579e5-8da4-4e95-aaea-8c7a35a1123f' # Pagina's
+  - 'viewpeerassets:21bdbefb-8c0d-4c59-a882-513e50af4f07' # Images
+  - 'viewpeerassets:a11a6090-1726-4b54-8d4c-452b8a10527b' # Bestanden
+  - 'viewpeerassets:b8548411-9aed-4a77-8336-5215cab501c2' # Videos
+  - 'viewpeerassets:cde186b0-5b45-468d-a51b-3d59e0f95553'
+  - 'viewpeerassets:f78d7b04-49b9-42bc-a2d9-0fa1bcac226c' # Grafisch
+  - 'viewpeerentries:83e21b02-216d-4f8e-ad37-891602724017' # Herbruikbare blokken
+  - 'viewpeerentries:d7a579e5-8da4-4e95-aaea-8c7a35a1123f' # Pagina's
+  - 'viewpeerentrydrafts:10fa1a6d-9eae-450d-afe2-07914cf42d54' # Bedrijfsgegevens
+  - 'viewpeerentrydrafts:50c7d6c4-07af-4aea-b86a-78d535b81ae4' # Home
+  - 'viewpeerentrydrafts:83e21b02-216d-4f8e-ad37-891602724017' # Herbruikbare blokken
+  - 'viewpeerentrydrafts:b2150467-5909-43c9-b0bf-24c286b78544' # 404
+  - 'viewpeerentrydrafts:d7a579e5-8da4-4e95-aaea-8c7a35a1123f' # Pagina's

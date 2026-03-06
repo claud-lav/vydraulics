@@ -1,0 +1,42 @@
+{% set title = title ?? null %}
+{% set text = text ?? null %}
+{% set img = img ?? null %}
+{% set graphic = graphic ?? null %}
+{% set link = link ?? null %}
+{% set rowSpan = rowSpan ?? null %}
+{% set colSpan = colSpan ?? null %}
+
+{% set rowSpanClasses = {
+    1: 'row-span-1',
+    2: 'md:row-span-2',
+    3: 'md:row-span-3',
+    4: 'md:row-span-4'
+} %}
+
+{% set colSpanClasses = {
+    1: 'col-span-1',
+    2: 'md:col-span-2',
+    3: 'md:col-span-3',
+    4: 'sm:col-span-2 md:col-span-3 lg:col-span-4'
+} %}
+
+<div class="border border-black p-1 flex flex-col gap-1 {{ [rowSpanClasses[rowSpan] ?? null]|filter|join(' ') }} {{ [colSpanClasses[colSpan] ?? null]|filter|join(' ') }}">
+    {% if img %}
+        <div class="aspect-5/4 overflow-hidden flex items-center justify-center">
+            <div class="h-full w-full">
+                {% include "_components/img/img-half" with { img: img, extraClass: 'w-full h-full object-cover'} %}
+            </div>
+        </div>
+    {% endif %}
+    {% if index > 1 %}
+        <h3 class="font-bold text-md">{{ title }}</h3>
+    {% else %}
+        <h2 class="font-bold text-md">{{ title }}</h2>
+    {% endif %}
+    {% if text %}
+        <p>{{ text }}</p>
+    {% endif %}
+    {% if link %}
+        {% include "_components/link" with { linkField: link } %}
+    {% endif %}
+</div>

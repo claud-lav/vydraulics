@@ -1,0 +1,45 @@
+columnSuffix: null
+handle: typeTextMedia
+instructions: null
+name: 'Type text & media'
+searchable: false
+settings:
+  customOptions: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - Simpel
+        -
+          - value
+          - simple
+        -
+          - icon
+          - ''
+        -
+          - color
+          - ''
+        -
+          - default
+          - '1'
+    -
+      __assoc__:
+        -
+          - label
+          - 'Met opmaak'
+        -
+          - value
+          - formatting
+        -
+          - icon
+          - ''
+        -
+          - color
+          - ''
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown

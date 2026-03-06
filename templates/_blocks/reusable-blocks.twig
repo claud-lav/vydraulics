@@ -1,0 +1,7 @@
+{% set sections = section.reusableBlock.one().contentBuilder.all() %}
+
+{% for section in sections %}
+    {% include "_blocks/" ~ section.type.handle|kebab with {
+        index: index
+    }%}
+{% endfor %}

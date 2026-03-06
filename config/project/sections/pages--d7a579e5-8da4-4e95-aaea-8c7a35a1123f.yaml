@@ -1,0 +1,28 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: 7ba66ae6-8f74-4654-bf31-85557659bb59 # Content builder
+  -
+    uid: 50c54ef8-5dbb-4881-b601-79190dcf19cb # Extern
+  -
+    uid: 8333f074-28b0-4a24-938e-84fbdd659649 # Dropdown Label
+handle: pages
+maxAuthors: 1
+name: "Pagina's"
+previewTargets:
+  -
+    label: 'Primary entry page'
+    refresh: '1'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  19c6391b-a582-4651-b999-d4761e7a122c: # vydraulics
+    enabledByDefault: true
+    hasUrls: true
+    template: _pages/index.twig
+    uriFormat: "{% if object.type.handle in ['dropdownLabel'] %}{% elseif object.type.handle in ['external'] %}{slug}{% elseif object.level == 1 %}{slug}{% else %}{parent.uri}/{slug}{% endif %}"
+structure:
+  maxLevels: null
+  uid: 63fcc18d-29a5-4aaa-81c3-d8f482007c3c
+type: structure

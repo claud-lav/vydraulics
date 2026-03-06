@@ -1,0 +1,126 @@
+allowLineBreaksInTitles: true
+color: yellow
+description: null
+fieldLayouts:
+  46dc0115-19a2-4ccc-b28c-072a55b857d3:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-10-27T14:25:44+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 0abea0a9-ae51-4f92-b5df-fc3c63d9f74c
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-10-27T15:14:22+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 341139fe-1d0b-482a-8988-b43f7db3bd65 # Slider type
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 18b0a08e-d224-415c-8135-a4655d343a19
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-10-27T15:16:56+00:00'
+            editCondition: null
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: craft\fields\conditions\OptionsFieldConditionRule
+                  fieldUid: 341139fe-1d0b-482a-8988-b43f7db3bd65 # Slider type
+                  layoutElementUid: 18b0a08e-d224-415c-8135-a4655d343a19
+                  operator: in
+                  uid: 1cdef398-e25b-4c6e-859d-7cf3fe36a111
+                  values:
+                    - images
+              elementType: craft\elements\Entry
+              fieldContext: global
+            elementEditCondition: null
+            fieldUid: 5e73d60b-902d-4638-970b-a1db997ab152 # Afbeeldingen
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e0017625-59f6-41f9-9706-612f11570ee6
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-10-27T15:16:56+00:00'
+            editCondition: null
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: craft\fields\conditions\OptionsFieldConditionRule
+                  fieldUid: 341139fe-1d0b-482a-8988-b43f7db3bd65 # Slider type
+                  layoutElementUid: 18b0a08e-d224-415c-8135-a4655d343a19
+                  operator: in
+                  uid: 0f37533a-9f6f-42d3-8fa2-ce7385bc6343
+                  values:
+                    - textMedia
+              elementType: craft\elements\Entry
+              fieldContext: global
+            elementEditCondition: null
+            fieldUid: e9612cf6-d08f-4d03-bd5b-4376c815ece7 # Tekst en media kaarten 
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7f9ce339-86d9-4604-a37d-486daee58e7c
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 8c65ae5e-a6a1-4194-a786-9cb47dbf3d56
+        userCondition: null
+    thumbFieldKey: null
+handle: slider
+hasTitleField: true
+icon: rectangle-vertical-history
+name: Slider
+showSlugField: false
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

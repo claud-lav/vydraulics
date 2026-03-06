@@ -1,0 +1,54 @@
+columnSuffix: null
+handle: display
+instructions: null
+name: Weergave
+searchable: false
+settings:
+  customOptions: false
+  iconsOnly: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - 'Selecteer een weergave'
+        -
+          - value
+          - ''
+        -
+          - icon
+          - ''
+        -
+          - default
+          - '1'
+    -
+      __assoc__:
+        -
+          - label
+          - Blogs
+        -
+          - value
+          - blogs
+        -
+          - icon
+          - ''
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - Contact
+        -
+          - value
+          - contact
+        -
+          - icon
+          - ''
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\ButtonGroup

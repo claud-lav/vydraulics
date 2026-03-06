@@ -1,0 +1,26 @@
+{% set blogs = craft.entries().section('blog').with(['img']).all() %}
+
+<section class="section {{ index is same as 1 ? 'section-top' }}">
+	<div class="container">
+        {% include "_components/title" with { title: section.title } %}
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1">
+            {% for item in blogs %}
+                {% set img = item.img.one() %}
+                <a href="{{ item.url }}">
+                    <div>
+                        {% if img %}
+                            {% include "_components/img/img-third" with { img: img } %}
+                        {% endif %}
+                    </div>
+                    <div class="border p-1">
+                        {% if index is same as 1  %}
+                            <h2>{{ item.title }}</h2>
+                        {% else %}
+                            <h3>{{ item.title }}</h3>
+                        {% endif %}
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+	</div>
+</section>

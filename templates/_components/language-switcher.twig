@@ -1,0 +1,26 @@
+{% set allSites = craft.app.sites.getAllSites()|filter(site => site.language is not same as currentSite.language) %}
+
+{% if allSites|length > 1 %}
+    <ul class="js-language-switcher">
+        {% for item in allSites %}
+            {% set localizedEntry = craft.entries.site(item).id(entry.id).one() %}
+            <li>
+                <a class="language-switch footer__gdpr" href="{{ localizedEntry.getUrl() }}" hreflang="{{ item.language }}">{{ languageNames[item.language] }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    {% js %}
+      document.addEventListener('click', function(e) {
+        var link = e.target.closest('.js-language-switcher .language-switch');
+        if (link) {
+          e.preventDefault();
+          var d = new Date();
+          d.setTime(d.getTime() + (30 * 24 * 60 * 60 * 1000));
+          document.cookie = 'language_preference=manual; expires=' + d.toUTCString() + '; path=/; SameSite=Lax';
+          var url = new URL(link.href);
+          url.searchParams.set('lp', 'manual');
+          window.location.href = url.toString();
+        }
+      });
+    {% endjs %}
+{% endif %}

@@ -1,0 +1,26 @@
+{% set navigation = craft.entries().section('pages').footNav(true).all() %}
+{% set currentUrl = entry is defined and entry ? entry.url : null %}
+
+<footer class="w-full center py-2">
+	<div class="container">
+		<div class="w-10">
+            {% if companyInfo.logo.one() %}
+                <a href="{{ currentSite.baseUrl }}" class="w-full h-2">
+					{% include "_components/asset" with {
+                        asset: companyInfo.logo.one(),
+                        size: 'third',
+                        class: companyInfo.logo.one().extension is same as 'svg' ? 'w-full h-auto' : 'w-full h-full'
+                    } %}
+				</a>
+            {% endif %}
+        </div>
+        <nav>
+            <ul class="flex gap-4">
+            {% for item in navigation %}
+                <li><a class="{{ currentUrl == item.url ? 'text-prim' }} hover:text-prim" href="{{ item.url }}"> {{ item.footLabel is not null ? item.footLabel : item.title }}</a></li>
+            {% endfor %}
+            </ul>
+        </nav>
+	</div>
+    {% include "_components/required-info" %}
+</footer>

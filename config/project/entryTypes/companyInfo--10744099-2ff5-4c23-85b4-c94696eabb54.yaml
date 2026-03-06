@@ -1,0 +1,174 @@
+allowLineBreaksInTitles: false
+color: null
+description: null
+fieldLayouts:
+  048c7469-2430-48f4-87ca-2b4d135db913:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-10-08T10:56:47+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 51f3e700-4192-498d-9595-be3017b6a585 # Address
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 46b83bf0-b86c-4bf8-ad3a-10eca6fffdd0
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-10-08T10:56:47+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 866e99bb-53fe-42ee-abd1-4cbb934afeb9 # E-mail
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b5c2a25d-2802-4422-bcf0-1348a3732f2a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-10-08T10:56:47+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: b26636b7-849b-4fb5-b0af-ecdfd309b7c4 # Tekst
+            handle: tel
+            instructions: null
+            label: Tel
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 43da766a-ff58-4177-aaf6-1e3e882944e8
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-10-08T12:01:58+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: b26636b7-849b-4fb5-b0af-ecdfd309b7c4 # Tekst
+            handle: btwNum
+            instructions: null
+            label: 'BTW nummer'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0200ff99-fb41-4548-95fd-d3fd63a24b88
+            userCondition: null
+            warning: null
+            width: 100
+        name: Contact
+        uid: df1ff1d3-ef85-46b5-8e56-589792191b96
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-10-27T11:43:08+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: d5670209-ed06-4feb-a759-387539d6656a # Grafisch
+            handle: logo
+            instructions: null
+            label: Logo
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b17dca85-14b1-4555-bac1-a527e5ccc0eb
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-06T11:51:06+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: d5670209-ed06-4feb-a759-387539d6656a # Grafisch
+            handle: logoInverted
+            instructions: null
+            label: 'Logo inverted'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2604ae97-7fb4-4609-815d-08ddcafd42fd
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-10-17T09:05:33+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: d419b9ec-3b83-48e2-a5d5-7d675cd35d06 # Afbeelding
+            handle: logoEmail
+            instructions: "Moet een PNG zijn\r\n"
+            label: 'Logo E-mail'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 81a36084-09b2-454a-9185-2d42eadac975
+            userCondition: null
+            warning: null
+            width: 100
+        name: Branding
+        uid: 45034303-6a9c-4de9-b7fd-354db7c46cbb
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-10-27T11:06:40+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: b26636b7-849b-4fb5-b0af-ecdfd309b7c4 # Tekst
+            handle: iubendaId
+            instructions: null
+            label: 'Iubenda ID'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b9af36f1-ca5e-44ac-8599-096fa980728b
+            userCondition: null
+            warning: null
+            width: 100
+        name: GDPR
+        uid: 2dc8aca0-27dd-4f79-b0f8-66917827b33e
+        userCondition:
+          class: craft\elements\conditions\users\UserCondition
+          conditionRules:
+            -
+              class: craft\elements\conditions\users\AdminConditionRule
+              uid: c0246912-6edf-4046-bda1-de2d4daa354a
+              value: true
+          elementType: craft\elements\User
+          fieldContext: global
+    thumbFieldKey: null
+handle: companyInfo
+hasTitleField: false
+icon: copyright
+name: Bedrijfsgegevens
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: Bedrijfsgegevens
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

@@ -1,0 +1,348 @@
+dateModified: 1772806249
+elementSources:
+  craft\elements\Entry:
+    -
+      defaultSort:
+        - postDate
+        - desc
+      defaultViewMode: ''
+      disabled: false
+      key: '*'
+      page: Entries
+      tableAttributes:
+        - status
+        - section
+        - postDate
+        - expiryDate
+        - authors
+        - link
+      type: native
+    -
+      defaultSort:
+        - title
+        - asc
+      defaultViewMode: ''
+      disabled: true
+      key: singles
+      page: Entries
+      tableAttributes:
+        - status
+        - link
+      type: native
+    -
+      heading: "Pagina's"
+      key: 'heading:f2ecbb71-1a71-4e8d-98da-cc56ec055ee7'
+      page: Entries
+      type: heading
+    -
+      condition:
+        class: craft\elements\conditions\entries\EntryCondition
+        conditionRules:
+          -
+            class: craft\elements\conditions\entries\SectionConditionRule
+            operator: in
+            uid: 08b5f732-6c3d-4f8c-85fe-ff748c4b5b02
+            values:
+              - 50c7d6c4-07af-4aea-b86a-78d535b81ae4 # Home
+        elementType: craft\elements\Entry
+        fieldContext: global
+      defaultSort:
+        - id
+        - asc
+      defaultViewMode: ''
+      key: 'custom:edc9f746-b40e-4f9c-a60e-b3926351ef17'
+      label: Home
+      page: Entries
+      tableAttributes: '-'
+      type: custom
+    -
+      key: 'section:d7a579e5-8da4-4e95-aaea-8c7a35a1123f' # Pagina's
+      page: Entries
+      type: native
+    -
+      condition:
+        class: craft\elements\conditions\entries\EntryCondition
+        conditionRules:
+          -
+            class: craft\elements\conditions\entries\SectionConditionRule
+            operator: in
+            uid: 31611bf7-2c7d-4f61-a853-32df9b6ba373
+            values:
+              - b2150467-5909-43c9-b0bf-24c286b78544 # 404
+        elementType: craft\elements\Entry
+        fieldContext: global
+      defaultSort:
+        - id
+        - asc
+      defaultViewMode: ''
+      key: 'custom:207ed970-37d7-4f68-9877-7d1620026e94'
+      label: Error
+      page: Entries
+      tableAttributes: '-'
+      type: custom
+    -
+      heading: Collecties
+      key: 'heading:ed36d31b-dc84-431b-99cd-541feaa91ebb'
+      page: Entries
+      type: heading
+    -
+      key: 'section:925e875f-2662-48af-af0b-9828ecbfbabb' # Solutions
+      page: Entries
+      type: native
+    -
+      key: 'section:921c0d73-9e49-4b11-aeda-59d9a7d23434' # Industries
+      page: Entries
+      type: native
+    -
+      key: 'section:db395745-863e-4cb8-bec2-9ff2beedf3e3' # Blog
+      page: Entries
+      type: native
+    -
+      heading: Globalen
+      key: 'heading:364e8895-befd-4692-8d88-b5b4ea0f8d26'
+      page: Entries
+      type: heading
+    -
+      defaultSort:
+        - postDate
+        - desc
+      defaultViewMode: ''
+      disabled: false
+      key: 'section:83e21b02-216d-4f8e-ad37-891602724017' # Herbruikbare blokken
+      page: Entries
+      tableAttributes:
+        - status
+        - postDate
+        - expiryDate
+        - authors
+        - link
+      type: native
+    -
+      condition:
+        class: craft\elements\conditions\entries\EntryCondition
+        conditionRules:
+          -
+            class: craft\elements\conditions\entries\SectionConditionRule
+            operator: in
+            uid: 6e661976-5b2b-461a-86c8-aa73893bf435
+            values:
+              - 10fa1a6d-9eae-450d-afe2-07914cf42d54 # Bedrijfsgegevens
+        elementType: craft\elements\Entry
+        fieldContext: global
+      defaultSort:
+        - id
+        - asc
+      defaultViewMode: ''
+      key: 'custom:43e93504-5bc4-43e8-801b-e10a19ec104d'
+      label: Bedrijfsgegevens
+      page: Entries
+      tableAttributes: '-'
+      type: custom
+    -
+      condition:
+        class: craft\elements\conditions\entries\EntryCondition
+        conditionRules:
+          -
+            class: craft\elements\conditions\entries\SectionConditionRule
+            operator: in
+            uid: aad970dc-a666-4ce5-977a-9968507ce21e
+            values:
+              - b9ccf89e-dfed-4115-885f-a4fa59fe0da5 # Vaste content blog
+        elementType: craft\elements\Entry
+        fieldContext: global
+      defaultSort:
+        - id
+        - asc
+      defaultViewMode: ''
+      key: 'custom:8dac5cc1-3192-412b-a93f-f8b445024940'
+      label: "Vaste content pagina's"
+      page: Entries
+      tableAttributes: '-'
+      type: custom
+    -
+      heading: ''
+      key: 'heading:8fb0eb30-21ae-4e3e-8fd5-5ba189159c8c'
+      page: Entries
+      type: heading
+email:
+  fromEmail: $SYSTEM_EMAIL
+  fromName: $SYSTEM_SENDER
+  replyToEmail: null
+  template: null
+  transportSettings:
+    messageStream: ''
+    token: $POSTMARK_API
+  transportType: craftcms\postmark\Adapter
+fs:
+  files:
+    hasUrls: true
+    name: Bestanden
+    settings:
+      path: $FILES_PATH
+    type: craft\fs\Local
+    url: $FILES_URL
+  filesPrivate:
+    hasUrls: false
+    name: 'Bestanden privaat'
+    settings:
+      path: $FILES_PRIVATE_PATH
+    type: craft\fs\Local
+    url: null
+  graphic:
+    hasUrls: true
+    name: Grafisch
+    settings:
+      path: $GRAPHICS_PATH
+    type: craft\fs\Local
+    url: $GRAPHICS_URL
+  images:
+    hasUrls: true
+    name: Images
+    settings:
+      path: $IMAGES_PATH
+    type: craft\fs\Local
+    url: $IMAGES_URL
+  transforms:
+    hasUrls: true
+    name: Transforms
+    settings:
+      path: $TRANSFORMS_PATH
+    type: craft\fs\Local
+    url: $TRANSFORMS_URL
+  videos:
+    hasUrls: true
+    name: Videos
+    settings:
+      path: $VIDEOS_PATH
+    type: craft\fs\Local
+    url: $VIDEOS_URL
+meta:
+  __names__:
+    0c71ac55-7755-4836-a994-46cdb5598721: 'CTA / Banner' # CTA / Banner
+    0cd0b883-5ab2-423f-846c-79048e845068: Simple # Simple
+    0db920fc-65a8-4958-a4ae-28660f9e88b3: Autheurs # Autheurs
+    1cb587a7-06a2-43fd-baf9-76c5a3643fa6: 'Content Builder' # Content Builder
+    2cd779f0-ed42-4b4e-bfc2-b308659a59d3: 'Contact Form' # Contact Form
+    3c87820d-7380-4d79-b2ba-066b52070437: 'Grid item' # Grid item
+    3d2950df-c852-41fc-822f-3693d59cb426: Hero # Hero
+    3e3c8e13-40d3-4a3d-bec8-319341178bcb: Blog # Blog
+    4db13d2e-52ea-40df-a669-bc6f26a7b3b7: 'Content overzicht' # Content overzicht
+    4df51339-725b-4b93-9923-51fd75ff7503: 'Interne link' # Interne link
+    5d992cd5-90eb-4385-ab67-201f8c4735d3: Formulier # Formulier
+    5e73d60b-902d-4638-970b-a1db997ab152: Afbeeldingen # Afbeeldingen
+    7ba66ae6-8f74-4654-bf31-85557659bb59: 'Content builder' # Content builder
+    7bf8a881-40d9-405e-8ff9-01327db24e82: Tekst # Tekst
+    8d1abe98-fa53-4467-9374-ed515e19adc8: 'Custom blok' # Custom blok
+    8da8895a-e435-4c1c-b380-2adaed160428: 'Herbruikbare blok' # Herbruikbare blok
+    9ab6bb51-b970-4016-a18f-5e73602a97d4: 'Klant SEO' # Klant SEO
+    9ae8bc99-812c-41f7-8055-6b34d438d1a4: Title # Title
+    9b22aff0-e05a-4e7c-88e8-96ac02f22e1c: 'Custom blok' # Custom blok
+    9f657aa3-5a52-40ab-9e54-3be4ffbe250b: 'Externe url' # Externe url
+    9fad849c-33cb-45ee-8437-0998daace584: Form # Form
+    10fa1a6d-9eae-450d-afe2-07914cf42d54: Bedrijfsgegevens # Bedrijfsgegevens
+    19c6391b-a582-4651-b999-d4761e7a122c: vydraulics # vydraulics
+    21bdbefb-8c0d-4c59-a882-513e50af4f07: Images # Images
+    22a975b8-0012-4343-a4ce-1d80cf79af7f: 'Klant Basis' # Klant Basis
+    36eb657c-3e53-401a-acbe-4b67bd2aa5e3: Video # Video
+    036f8a8a-800a-4e40-853c-36483ceb875c: SEO # SEO
+    50c7d6c4-07af-4aea-b86a-78d535b81ae4: Home # Home
+    50c54ef8-5dbb-4881-b601-79190dcf19cb: Extern # Extern
+    51f3e700-4192-498d-9595-be3017b6a585: Address # Address
+    58a18928-e4be-4f0f-8851-7a1fc536130a: Tekst # Tekst
+    72c36e6e-97b8-4b29-8ded-00c809b5d74c: 'Afgerond nummer' # Afgerond nummer
+    83e21b02-216d-4f8e-ad37-891602724017: 'Herbruikbare blokken' # Herbruikbare blokken
+    89e06ce2-ff33-4cd0-97d9-8d3ff401aaa4: '404' # 404
+    266ced0e-c3ba-43c6-915a-b36a12ff5665: Grafisch # Grafisch
+    866e99bb-53fe-42ee-abd1-4cbb934afeb9: E-mail # E-mail
+    880b0bcc-6186-4b71-b7e6-39d3afe13757: Weergave # Weergave
+    921c0d73-9e49-4b11-aeda-59d9a7d23434: Industries # Industries
+    925e875f-2662-48af-af0b-9828ecbfbabb: Solutions # Solutions
+    1496ba50-de7f-4f53-a109-5886807edba5: 'Bestand privaat' # Bestand privaat
+    8138ee73-7eeb-4136-94ce-8c7877a4e8e4: Bestanden # Bestanden
+    8333f074-28b0-4a24-938e-84fbdd659649: 'Dropdown Label' # Dropdown Label
+    9007ba8d-3f24-482a-a291-6cbbf983e5f1: Grid # Grid
+    47208dc2-a0f0-48f6-97a3-57467ab1ca51: 'Grid nummers' # Grid nummers
+    90934f05-5453-48ab-8006-10c08affa1d3: $PROJECT_NAME # $PROJECT_NAME
+    131373ac-7b23-42f7-9044-7f7b990afd0a: Slider # Slider
+    341139fe-1d0b-482a-8988-b43f7db3bd65: 'Slider type' # Slider type
+    387420a0-370b-46b6-aa76-ce5695a39fec: Bestand # Bestand
+    10744099-2ff5-4c23-85b4-c94696eabb54: Bedrijfsgegevens # Bedrijfsgegevens
+    16721861-42b3-4475-ba22-6876200fa360: New # New
+    38895421-c276-4257-85fa-c4ccf178ab45: 'Type text & media' # Type text & media
+    a11a6090-1726-4b54-8d4c-452b8a10527b: Bestanden # Bestanden
+    a946310e-0382-4eb1-b946-01b0ad63c3c9: 'Grid items' # Grid items
+    aabe6022-bbeb-4d8b-9e16-a57a9230b2ec: 'Tekst en media kaart' # Tekst en media kaart
+    ac529efd-0b0d-4ef9-907a-e2532820a637: Solutions # Solutions
+    af908524-48f4-4030-b6b5-619ff14bacdc: Boolean # Boolean
+    b6b81eea-4b8a-4445-93a2-4e6d734925cd: Industries # Industries
+    b9ccf89e-dfed-4115-885f-a4fa59fe0da5: 'Vaste content blog' # Vaste content blog
+    b9cfc53b-27bb-4e61-8f85-d438a0085106: 'Hero stijl' # Hero stijl
+    b26636b7-849b-4fb5-b0af-ecdfd309b7c4: Tekst # Tekst
+    b669478b-48d0-44ef-83a2-57b96b2ab019: 'Tekst en media' # Tekst en media
+    b2150467-5909-43c9-b0bf-24c286b78544: '404' # 404
+    b8548411-9aed-4a77-8336-5215cab501c2: Videos # Videos
+    bb7becdd-3a77-49f6-bf93-f1fd1d9d8f9a: Link # Link
+    c4f44d9e-2af6-4882-b423-60713b419810: Expanded # Expanded
+    d5ff05d1-6363-4f78-b240-c6d01051021f: Lijst # Lijst
+    d7a579e5-8da4-4e95-aaea-8c7a35a1123f: "Pagina's" # Pagina's
+    d419b9ec-3b83-48e2-a5d5-7d675cd35d06: Afbeelding # Afbeelding
+    d5670209-ed06-4feb-a759-387539d6656a: Grafisch # Grafisch
+    db395745-863e-4cb8-bec2-9ff2beedf3e3: Blog # Blog
+    dcb1221a-0380-45bb-a0b8-1b49332cd861: 'Herbruikbare blok' # Herbruikbare blok
+    df575115-ab5c-44bf-b3d6-e5b977e66a89: Videos # Videos
+    e7d4a70c-a925-4f2d-a4d5-403db94ee1cd: 'Vaste content' # Vaste content
+    e9612cf6-d08f-4d03-bd5b-4376c815ece7: 'Tekst en media kaarten ' # Tekst en media kaarten 
+    ecc8b910-8de2-4dff-9f56-b8c2fb1a5ea1: 'Tekst ' # Tekst 
+    ed256f5e-30b9-4e9a-a2e2-f34c9e4fdedf: Bedankt # Bedankt
+    f05d803c-2108-4feb-aeef-f027ceb79259: 'Bestanden privaat' # Bestanden privaat
+    f78d7b04-49b9-42bc-a2d9-0fa1bcac226c: Grafisch # Grafisch
+    f66276c7-37d2-43a9-9ead-e33441341f7a: Collecties # Collecties
+    fd73dd57-393f-40eb-81a5-70ae3ea3344b: Anchor # Anchor
+plugins:
+  ckeditor:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.0.0.0
+  formie:
+    edition: standard
+    enabled: true
+    licenseKey: null
+    schemaVersion: 3.4.10
+  imager-x:
+    edition: pro
+    enabled: true
+    licenseKey: null
+    schemaVersion: 4.0.0
+  postmark:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.0.1
+  retour:
+    edition: standard
+    enabled: true
+    licenseKey: null
+    schemaVersion: 3.0.12
+  seomatic:
+    edition: standard
+    enabled: true
+    licenseKey: null
+    schemaVersion: 3.0.13
+  sprig:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.1
+  translations-admin:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.1.0
+  vite:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+system:
+  edition: pro
+  live: true
+  name: $PROJECT_NAME
+  retryDuration: null
+  schemaVersion: 5.9.0.8
+  timeZone: Europe/Brussels

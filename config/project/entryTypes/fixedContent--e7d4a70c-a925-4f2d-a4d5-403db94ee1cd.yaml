@@ -1,0 +1,40 @@
+color: null
+description: null
+fieldLayouts:
+  d3bf08da-f646-4fe8-9861-472902e4ddd3:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-10-27T11:10:10+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 1cb587a7-06a2-43fd-baf9-76c5a3643fa6 # Content Builder
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 91719964-bc9e-4a4c-90a3-fa2d2955158e
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: e3d448ff-7416-453a-b6a9-c0556e12ce56
+        userCondition: null
+handle: fixedContent
+hasTitleField: false
+icon: memo-circle-info
+name: 'Vaste content'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: '{section.name}'
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

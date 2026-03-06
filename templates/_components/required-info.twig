@@ -1,0 +1,14 @@
+{% set contact = craft.entries.section('contact').one() %}
+
+<div class="container flex justify-between items-center">
+    <div class="flex items-center gap-4">
+        <p class="text-sm">© {{ 'Company'|t }}</p>
+        <p class="text-sm">{{ 'VAT'|t }} {{ companyInfo.btwNum }}</p>
+    </div>
+    <div>
+        <a class="flex items-center gap-0.5 text-sm" href="https://www.likeavirgin.be/nl" aria-label="{{ 'Bezoek de site van de maker van deze site'|t }}">                 
+            {{ svg("assets/icons/g.svg")|attr({class: 'h-4 w-4' }) }} 
+            Like a Virgin
+        </a>
+    </div>
+</div>

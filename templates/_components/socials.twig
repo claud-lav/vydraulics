@@ -1,0 +1,15 @@
+{% set socials = seomatic.site.sameAsLinks %}
+
+<pre>
+    {{ dump(socials) }}
+</pre>
+
+<ul class="flex flex-row gap-1 items-center">
+    {% for item in socials %}
+        {% if item.handle is same as 'youtube' %}
+            <a href="{{ item.url }}" target="_blank" aria-label="{{ 'Ga naar'|t ~ ' ' ~ item.siteName }}">{{ svg('assets/icons/' ~ item.handle ~ '.svg')|attr({class:"opacity-50 hover:opacity-100 w-1.5 h-auto text-black fill-black hover:text-prim hover:fill-prim"})}}</a>
+        {% else %}
+            <a href="{{ item.url }}" target="_blank" aria-label="{{ 'Ga naar'|t ~ ' ' ~ item.siteName }}">{{ svg('assets/icons/' ~ item.handle ~ '.svg')|attr({class:"opacity-50 hover:opacity-100 w-auto h-1 text-black fill-black hover:text-prim hover:fill-prim"})}}</a>
+        {% endif %}
+    {% endfor %}
+</ul>

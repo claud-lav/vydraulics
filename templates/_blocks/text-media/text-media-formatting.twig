@@ -1,0 +1,12 @@
+{% set img = section.img.one() %}
+
+<section class="section">
+    <div class="container center">
+        <div class="max-w-small">
+            {% include "_components/title" with { title: section.title } %}
+            <div class="cke">
+                {{ section.ckeExpanded }}
+            </div>
+        </div>
+    </div>
+</section>

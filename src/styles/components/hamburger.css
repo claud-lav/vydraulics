@@ -1,0 +1,35 @@
+.hamburger {
+  @apply relative h-5 w-6 md:hidden hover:cursor-pointer;
+}
+
+.hamburger-open {
+  @apply fixed top-2 right-6 z-2;
+}
+
+.hamburger-bar {
+  @apply absolute left-0 h-[0.175rem] bg-prim w-full transition-all duration-300;
+}
+
+.hamburger-bar--top {
+  @apply top-0;
+}
+
+.hamburger-bar--center {
+  @apply top-1/2 -translate-y-1/2;
+}
+
+.hamburger-bar--bottom {
+  @apply bottom-0;
+}
+
+.hamburger-open .hamburger-bar--top {
+  @apply -translate-y-1/2 -rotate-45;
+}
+
+.hamburger-open .hamburger-bar--center {
+  @apply opacity-0;
+}
+
+.hamburger-open .hamburger-bar--bottom {
+  @apply -translate-y-1/2 rotate-45;
+}

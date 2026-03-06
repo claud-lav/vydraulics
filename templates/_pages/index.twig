@@ -1,0 +1,6 @@
+{% extends "_layouts/base.twig" %}
+
+{% block content %}
+	{# Bekijkt welke entry type je pagina geeft en verwijst door naar die soort entry #}
+	{% include "_pages/" ~ entry.type.handle|kebab ~ ".twig" %}
+{% endblock %}

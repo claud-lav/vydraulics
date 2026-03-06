@@ -1,0 +1,274 @@
+allowLineBreaksInTitles: false
+color: null
+description: null
+fieldLayouts:
+  dc859baa-10c5-4b21-b84f-597d9d50f798:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-06-24T10:08:31+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 32e552a8-0e6e-4425-9f97-5902fea6a162
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-06-24T10:14:19+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 1cb587a7-06a2-43fd-baf9-76c5a3643fa6 # Content Builder
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7631abd2-ae60-4011-9df6-cd4ead414995
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 8e4c818d-6e54-46cd-8be2-60569c18c377
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-10-08T10:46:46+00:00'
+            elementCondition: null
+            heading: Header
+            type: craft\fieldlayoutelements\Heading
+            uid: af39c39e-a729-4e01-ab34-d03961f5eb22
+            userCondition: null
+          -
+            dateAdded: '2025-10-08T10:46:46+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: af908524-48f4-4030-b6b5-619ff14bacdc # Boolean
+            handle: headNav
+            instructions: null
+            label: 'Tonen in navigatie'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 026d028a-fa05-49b9-9644-63a6081404be
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-06T11:48:54+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: af908524-48f4-4030-b6b5-619ff14bacdc # Boolean
+            handle: subHeadNav
+            instructions: null
+            label: 'Tonen in subnavigatie'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 11b5bc99-efdb-4e38-9303-ceaa172509d5
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-10-08T10:46:46+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: b26636b7-849b-4fb5-b0af-ecdfd309b7c4 # Tekst
+            handle: headLabel
+            instructions: null
+            label: 'Alternatief label navigatie'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9243f456-0685-421e-917c-5222ce94bef6
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-06T14:01:54+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: af908524-48f4-4030-b6b5-619ff14bacdc # Boolean
+            handle: asBtn
+            instructions: null
+            label: 'Als knop'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 50b35503-0ff7-4480-9531-ee96aeca3af9
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-06T11:45:08+00:00'
+            editCondition: null
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: craft\elements\conditions\HasDescendantsRule
+                  uid: 826f6156-827e-47b9-ba65-8e16237169c6
+                  value: true
+              elementType: craft\elements\Entry
+              fieldContext: global
+            elementEditCondition: null
+            fieldUid: af908524-48f4-4030-b6b5-619ff14bacdc # Boolean
+            handle: showChildren
+            instructions: null
+            label: 'Toon onderverdeling in dropdown'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b56e2ae9-1293-487e-b2ce-b18903e8a6a2
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-06T11:45:08+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: af908524-48f4-4030-b6b5-619ff14bacdc # Boolean
+            handle: showCollection
+            instructions: null
+            label: 'Toon collectie als onderverdeling'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 18dfe5e1-9bd5-4ec8-8074-34a1a326ea1a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-06T11:45:08+00:00'
+            editCondition: null
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: craft\fields\conditions\LightswitchFieldConditionRule
+                  fieldUid: af908524-48f4-4030-b6b5-619ff14bacdc # Boolean
+                  layoutElementUid: 18dfe5e1-9bd5-4ec8-8074-34a1a326ea1a
+                  uid: 36405f6d-1e57-48de-bda4-7f01bacfad9c
+                  value: true
+              elementType: craft\elements\Entry
+              fieldContext: global
+            elementEditCondition: null
+            fieldUid: f66276c7-37d2-43a9-9ead-e33441341f7a # Collecties
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 48ceb09d-805a-44d0-89e0-6d27a9d5126b
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-10-08T10:46:46+00:00'
+            elementCondition: null
+            heading: Footer
+            type: craft\fieldlayoutelements\Heading
+            uid: 7f1f7d2f-0d5d-4209-8edd-e4adece6090c
+            userCondition: null
+          -
+            dateAdded: '2025-10-08T10:46:46+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: af908524-48f4-4030-b6b5-619ff14bacdc # Boolean
+            handle: footNav
+            instructions: null
+            label: 'Tonen in footer navigatie'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 5af70cc1-a44d-4ccc-84cd-d3f12c61ced8
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-10-08T10:46:46+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: b26636b7-849b-4fb5-b0af-ecdfd309b7c4 # Tekst
+            handle: footLabel
+            instructions: null
+            label: 'Alternatief label footer navigatie'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0efcfab7-f169-48fe-a772-f3c38c0c66ba
+            userCondition: null
+            warning: null
+            width: 100
+        name: Instellingen
+        uid: 127d2a22-049b-4584-a1d9-452a2e9242ed
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-10-08T10:49:13+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 036f8a8a-800a-4e40-853c-36483ceb875c # SEO
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8e81c9ab-e828-488f-9885-a6053caf25f2
+            userCondition: null
+            warning: null
+            width: 100
+        name: SEO
+        uid: 500ef216-117e-4839-aae6-3b38d13d381c
+        userCondition: null
+    thumbFieldKey: null
+handle: contentBuilder
+hasTitleField: true
+icon: shapes
+name: 'Content builder'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

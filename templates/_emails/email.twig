@@ -1,0 +1,28 @@
+{#
+    Kwaremont Email Layout
+
+    Extends the base email layout with Kwaremont brand colors:
+    - Primary: #1d1c47 (dark navy)
+    - Secondary: #ea580c (orange)
+    - White: #ffffff
+    - Black: #000000
+#}
+
+{% set siteHandle = 'vydraulics' %}
+{% set brandName = 'Vydraulics' %}
+{% set headerBgColor = '#1d1c47' %}
+{% set footerBgColor = '#1d1c47' %}
+{% set footerTextColor = '#ffffff' %}
+{% set footerLinkColor = '#ea580c' %}
+{% set footerMutedColor = '#cccccc' %}
+{% set footerBorderColor = '#333333' %}
+{% set bodyBgColor = '#f4f4f4' %}
+{% set contentBgColor = '#ffffff' %}
+{% set textColor = '#1d1c47' %}
+{% set fontFamily = 'Arial, sans-serif' %}
+
+{% extends "_layouts/email.twig" %}
+
+{% block content %}
+    {{ body ?? contentHtml }}
+{% endblock %}

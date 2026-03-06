@@ -1,0 +1,21 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: 9ae8bc99-812c-41f7-8055-6b34d438d1a4 # Title
+handle: authors
+maxAuthors: 1
+name: Autheurs
+previewTargets:
+  -
+    label: 'Primary entry page'
+    refresh: '1'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  19c6391b-a582-4651-b999-d4761e7a122c: # vydraulics
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: null
+type: channel

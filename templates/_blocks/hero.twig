@@ -1,0 +1,3 @@
+{% if section.heroStyle.value %}
+    {% include "_blocks/hero/hero-" ~ section.heroStyle.value|kebab %}
+{% endif %}

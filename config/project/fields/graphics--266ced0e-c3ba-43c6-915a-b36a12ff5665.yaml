@@ -1,0 +1,38 @@
+columnSuffix: null
+handle: graphics
+instructions: null
+name: Grafisch
+searchable: false
+settings:
+  allowSelfRelations: false
+  allowSubfolders: false
+  allowUploads: true
+  allowedKinds:
+    - image
+  branchLimit: null
+  defaultPlacement: end
+  defaultUploadLocationSource: 'volume:f78d7b04-49b9-42bc-a2d9-0fa1bcac226c' # Grafisch
+  defaultUploadLocationSubpath: '{ rootOwner.section ?? owner.owner.section ?? entry.section  }'
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
+  previewMode: full
+  restrictFiles: true
+  restrictLocation: true
+  restrictedDefaultUploadSubpath: null
+  restrictedLocationSource: 'volume:f78d7b04-49b9-42bc-a2d9-0fa1bcac226c' # Grafisch
+  restrictedLocationSubpath: '{ rootOwner.section ?? owner.owner.section ?? entry.section  }'
+  selectionLabel: null
+  showCardsInGrid: false
+  showSearchInput: true
+  showSiteMenu: true
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  sources:
+    - 'volume:f78d7b04-49b9-42bc-a2d9-0fa1bcac226c' # Grafisch
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: list
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Assets

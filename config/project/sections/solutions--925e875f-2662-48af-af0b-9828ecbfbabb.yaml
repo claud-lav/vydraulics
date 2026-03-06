@@ -1,0 +1,24 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: ac529efd-0b0d-4ef9-907a-e2532820a637 # Solutions
+handle: solutions
+maxAuthors: 1
+name: Solutions
+previewTargets:
+  -
+    label: 'Primary entry page'
+    refresh: '1'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  19c6391b-a582-4651-b999-d4761e7a122c: # vydraulics
+    enabledByDefault: true
+    hasUrls: true
+    template: _pages/index.twig
+    uriFormat: 'solutions/{slug}'
+structure:
+  maxLevels: null
+  uid: bcc855f9-75d5-49f2-88aa-30fb7d59137a
+type: structure

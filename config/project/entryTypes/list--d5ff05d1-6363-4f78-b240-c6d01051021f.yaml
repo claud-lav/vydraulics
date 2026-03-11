@@ -202,6 +202,34 @@ fieldLayouts:
             userCondition: null
             warning: null
             width: 100
+          -
+            dateAdded: '2026-03-11T16:19:02+00:00'
+            editCondition: null
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: craft\fields\conditions\OptionsFieldConditionRule
+                  fieldUid: 8f0db651-05cb-4d73-9531-29f24587491d # Lijst type
+                  layoutElementUid: b28436f2-3bfa-4892-9297-2d30fb77615c
+                  operator: in
+                  uid: ff049a86-ad58-4727-8a33-be0713a56a25
+                  values:
+                    - checks
+              elementType: craft\elements\Entry
+              fieldContext: global
+            elementEditCondition: null
+            fieldUid: 1a9192ca-f304-4288-bef7-3d8252065024 # Boolean On
+            handle: switch
+            instructions: null
+            label: switch
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a440068d-e021-448b-8813-1556529975e6
+            userCondition: null
+            warning: null
+            width: 100
         name: Instellingen
         uid: f254138c-28c6-43ce-bd3b-f4be31ecccd0
         userCondition: null

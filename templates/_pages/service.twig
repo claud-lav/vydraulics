@@ -1,13 +1,4 @@
-{% set sectionsEntry = entry.contentBuilder.all() %}
-{% set sectionsFixed = null %}
-
-{% if entry.section.handle is same as 'solutions' %}
-    {% set sectionsFixed = solutionsFixedContent.contentBuilder.all() %}
-{% elseif entry.section.handle is same as 'industries' %}
-    {% set sectionsFixed = solutionsFixedContent.contentBuilder.all() %}
-{% endif %}
-
-{% set sections = sectionsEntry|merge(sectionsFixed) %}
+{% set sections = entry.contentBuilder.all() %}
 
 {% for section in sections %}
     {% include "_blocks/" ~ section.type.handle|kebab with { index: loop.index } %}

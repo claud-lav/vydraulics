@@ -1,0 +1,9 @@
+baseUrl: $VYDRAULICS_NL_URL
+enabled: '1'
+handle: vydraulicsNl
+hasUrls: true
+language: nl
+name: 'Vydraulics NL'
+primary: false
+siteGroup: c129713f-2f20-46c6-94ef-00fef5921902
+sortOrder: 2

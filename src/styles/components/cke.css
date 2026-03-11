@@ -1,6 +1,14 @@
-.cke {
+.cke-expanded {
+    h2 {
+        @apply text-md mb-md;
+    }
+
+    h3, h4 {
+        @apply text-sm mb-base mt-xl;
+    }
+
     p {
-        @apply mt-2;
+        @apply mt-1;
     }
 
     ul, ol {
@@ -16,6 +24,16 @@
     }
 
     .image {
-        @apply my-2
+        @apply my-xl w-full rounded-base overflow-hidden;
+    }
+
+    img {
+        @apply w-full h-auto object-cover
+    }
+}
+
+.cke-simple {
+    p {
+        @apply mb-1;
     }
 }

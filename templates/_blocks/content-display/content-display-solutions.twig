@@ -1,30 +1,3 @@
-{% set textMultiple = section.textMultiple %}
-{% set noTitleText = section.noTitleText %}
-{% set solutions = craft.entries().section('solutions').all() %}
-
-<section class="section">
-	<div class="container container-grid">
-		{% if not noTitleText %}
-			<div class="col-start-2 col-span-3 mr-3.25">
-				{% include "_components/title" with { title: section.title, extraClass: "mt-base text-md font-bold font-heading mb-md" } %}
-				{% if textMultiple %}
-					<p>{{ textMultiple }}</p>
-				{% endif %}
-			</div>
-		{% endif %}
-		{% if solutions|length %}
-			<ul class=" {{ noTitleText ? 'col-start-2 col-span-10' : 'col-start-5 col-span-8' }} grid grid-cols-3">
-				{% for item in solutions %}
-					<li class="group w-full h-full">
-						{% include "_components/card" with {
-                            url: item.url, 
-                            title: item.title, 
-                            text: item.textMultiple,
-                            linkLabel: 'More about'|t ~ ' ' ~ item.title
-                        } %}
-					</li>
-				{% endfor %}
-			</ul>
-		{% endif %}
-	</div>
-</section>
+{% include "_blocks/content-display/content-display-service" with {
+    items: craft.entries().section('solutions').level(1).all()
+} %}

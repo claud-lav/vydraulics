@@ -1,5 +1,8 @@
 import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 import "leaflet.markercluster";
+import "leaflet.markercluster/dist/MarkerCluster.css";
+import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 
 const BASE_MAP_OPTIONS = {
     center: [50.85, 4.35], // Default center on Belgium
@@ -15,10 +18,10 @@ const getMarkerMeta = (el) => ({
 });
 
 const buildPopupContent = ({ name, address, postalcode, city, country }) => {
-    let html = '<div class="map-info text-sm space-y-0.25">';
+    let html = '<div class="map-info text-xs space-y-0.25">';
 
     if (name) {
-        html += `<div class="font-semibold text-base">${name}</div>`;
+        html += `<div class="font-semibold">${name}</div>`;
     }
 
     const addressLines = [];
@@ -41,7 +44,7 @@ const buildPopupContent = ({ name, address, postalcode, city, country }) => {
 
 const createCustomIcon = () => {
     return L.divIcon({
-        html: `<img src="/assets/icons/pin.svg" alt="" style="width: 32px; height: auto;">`,
+        html: `<img src="/assets/icons/map-pin.svg" alt="" style="width: 32px; height: auto;">`,
         className: "leaflet-custom-marker",
         iconSize: [32, 32],
         iconAnchor: [16, 32],
@@ -49,8 +52,8 @@ const createCustomIcon = () => {
     });
 };
 
-const initKaffeesLeafletMap = () => {
-    const mapContainer = document.querySelector("[data-kaffees-map]");
+const initLocationsLeafletMap = () => {
+    const mapContainer = document.querySelector("[data-locations-map]");
     if (!mapContainer) {
         return;
     }
@@ -61,8 +64,8 @@ const initKaffeesLeafletMap = () => {
         mapContainer.innerHTML = "";
     }
 
-    const componentRoot = mapContainer.closest("[data-kaffees-component]") ?? document;
-    const markerElements = Array.from(componentRoot.querySelectorAll("[data-kaffees-marker]"));
+    const componentRoot = mapContainer.closest("[data-locations-component]") ?? document;
+    const markerElements = Array.from(componentRoot.querySelectorAll("[data-locations-marker]"));
 
     const map = L.map(mapContainer, {
         ...BASE_MAP_OPTIONS,
@@ -82,7 +85,7 @@ const initKaffeesLeafletMap = () => {
         iconCreateFunction: (cluster) => {
             const count = cluster.getChildCount();
             return L.divIcon({
-                html: `<div class="h-10 w-10 rounded-full text-white flex items-center justify-center font-bold" style="background-color: #ea580c;">${count}</div>`,
+                html: `<div class="h-2.25 w-2.25 rounded-full text-white flex items-center justify-center font-bold" style="background-color: #b01421;">${count}</div>`,
                 className: "leaflet-cluster-marker",
                 iconSize: [40, 40],
             });
@@ -123,7 +126,7 @@ const initKaffeesLeafletMap = () => {
 };
 
 const initializeMaps = () => {
-    initKaffeesLeafletMap();
+    initLocationsLeafletMap();
 };
 
 if (document.readyState === "loading") {

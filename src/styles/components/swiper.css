@@ -8,7 +8,7 @@
 }
 
 .swiper-pagination-bullet {
-    @apply block h-0.75 w-0.75 rounded-full bg-black/30;
+    @apply block h-0.75 w-0.75 rounded-full bg-transparent border border-prim;
 
     &-active {
         @apply bg-prim

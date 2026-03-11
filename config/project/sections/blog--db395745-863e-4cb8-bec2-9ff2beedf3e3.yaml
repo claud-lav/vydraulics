@@ -13,7 +13,7 @@ previewTargets:
     urlFormat: '{url}'
 propagationMethod: all
 siteSettings:
-  19c6391b-a582-4651-b999-d4761e7a122c: # vydraulics
+  19c6391b-a582-4651-b999-d4761e7a122c: # Vydraulics EN
     enabledByDefault: true
     hasUrls: true
     template: _pages/index.twig

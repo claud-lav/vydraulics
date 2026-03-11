@@ -1,0 +1,37 @@
+{% set count = section.countingNumbers|length %}
+{% if count <= 1 %}
+    {% set colsClass = 'grid-cols-1' %}
+{% elseif count == 2 %}
+    {% set colsClass = 'grid-cols-2' %}
+{% elseif count == 3 %}
+    {% set colsClass = 'grid-cols-3' %}
+{% elseif count == 4 %}
+    {% set colsClass = 'grid-cols-4' %}
+{% elseif count % 4 == 0 %}
+    {% set colsClass = 'grid-cols-4' %}
+{% elseif count % 3 == 0 %}
+    {% set colsClass = 'grid-cols-3' %}
+{% else %}
+    {% set colsClass = 'grid-cols-4' %}
+{% endif %}
+
+<section class="section">
+    <div class="container grid {{ colsClass }} items-center justify-center text-center lava" data-count-up>
+        {% for item in section.countingNumbers %}
+            <div>
+                <div class="font-bold font-heading text-lg mb-base">
+                    <span class="number" data-count-target="{{ item.number }}">0</span>
+                    {% if item.character %}
+                        <span class="text-prim">{{ item.character }}</span>
+                    {% endif %}
+                </div>
+                {% include "_components/title" with {
+                    title: item.title,
+                    extraClass:"mb-xs"
+                    overwriteSize: "text-sm"
+                } %}
+                <p>{{ item.text }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</section>

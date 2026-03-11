@@ -1,0 +1,26 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: 5fc4590c-a07a-408a-87ed-18342c651134 # Certificate
+handle: certifications
+maxAuthors: 1
+name: Certificaten
+previewTargets:
+  -
+    label: 'Primary entry page'
+    refresh: '1'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  19c6391b-a582-4651-b999-d4761e7a122c: # Vydraulics EN
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: null
+  cd9ac4b1-5d1a-4f39-afd7-8a91940ece7a: # Vydraulics NL
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: null
+type: channel

@@ -63,34 +63,6 @@ fieldLayouts:
                   fieldUid: 341139fe-1d0b-482a-8988-b43f7db3bd65 # Slider type
                   layoutElementUid: 18b0a08e-d224-415c-8135-a4655d343a19
                   operator: in
-                  uid: 1cdef398-e25b-4c6e-859d-7cf3fe36a111
-                  values:
-                    - images
-              elementType: craft\elements\Entry
-              fieldContext: global
-            elementEditCondition: null
-            fieldUid: 5e73d60b-902d-4638-970b-a1db997ab152 # Afbeeldingen
-            handle: null
-            instructions: null
-            label: null
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: e0017625-59f6-41f9-9706-612f11570ee6
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            dateAdded: '2025-10-27T15:16:56+00:00'
-            editCondition: null
-            elementCondition:
-              class: craft\elements\conditions\entries\EntryCondition
-              conditionRules:
-                -
-                  class: craft\fields\conditions\OptionsFieldConditionRule
-                  fieldUid: 341139fe-1d0b-482a-8988-b43f7db3bd65 # Slider type
-                  layoutElementUid: 18b0a08e-d224-415c-8135-a4655d343a19
-                  operator: in
                   uid: 0f37533a-9f6f-42d3-8fa2-ce7385bc6343
                   values:
                     - textMedia
@@ -108,8 +80,58 @@ fieldLayouts:
             userCondition: null
             warning: null
             width: 100
+          -
+            dateAdded: '2026-03-10T10:40:49+00:00'
+            editCondition: null
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: craft\fields\conditions\OptionsFieldConditionRule
+                  fieldUid: 341139fe-1d0b-482a-8988-b43f7db3bd65 # Slider type
+                  layoutElementUid: 18b0a08e-d224-415c-8135-a4655d343a19
+                  operator: in
+                  uid: ae8b42da-ab6c-42dc-9604-c52dd1a57432
+                  values:
+                    - brands
+              elementType: craft\elements\Entry
+              fieldContext: global
+            elementEditCondition: null
+            fieldUid: 266ced0e-c3ba-43c6-915a-b36a12ff5665 # Grafisch
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 94f4be38-fc7a-4eef-afdd-0afadff05133
+            userCondition: null
+            warning: null
+            width: 100
         name: Content
         uid: 8c65ae5e-a6a1-4194-a786-9cb47dbf3d56
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-03-10T11:03:07+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: af908524-48f4-4030-b6b5-619ff14bacdc # Boolean
+            handle: withBg
+            instructions: null
+            label: 'Met Achtergrond'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: aa7a2906-7674-4924-a803-272c9dfbfaf4
+            userCondition: null
+            warning: null
+            width: 100
+        name: Layout
+        uid: 40ae76ac-a9fd-480d-9ce6-05efde647e87
         userCondition: null
     thumbFieldKey: null
 handle: slider

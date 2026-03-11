@@ -1,0 +1,21 @@
+{% set brands = section.graphics.all()|merge(section.graphics.all()) %}
+<section class="section {{ section.withBg ? 'section-padding bg-white' : '' }}">
+    <div class="container">
+        {% include "_components/title" with {
+            title: section.title,
+            extraClass: "text-md text-center"
+        } %}
+        <div class="brands-slider mt-lg w-full">
+            <div class="swiper">
+                <div class="swiper-wrapper items-center">
+                    {% for brand in brands %}
+                        <div class="swiper-slide flex items-center justify-center w-full">
+                            {{ svg(brand)|attr({ class: "h-3 w-auto max-w-full grayscale mx-auto" }) }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="swiper-pagination justify-center mt-sm"></div>
+        </div>
+    </div>
+</section>

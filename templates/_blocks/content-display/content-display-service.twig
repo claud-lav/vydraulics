@@ -1,0 +1,73 @@
+{% set items = items ?? null %}
+{% set textMultiple = section.textMultiple %}
+{% set noTitleText = section.noTitleText %}
+{% set asAccordion = section.asAccordion %}
+{% set link = section.linkField %}
+{% set withArrowCard = withArrowCard ?? false %}
+
+<section class="section">
+	<div class="container {{ asAccordion ? 'flex flex-col lg:flex-row gap-md' : 'container-grid' }}">
+		{% if not noTitleText %}
+			<div class="{{ asAccordion ? 'w-full lg:max-w-17' : 'xl:col-start-2 col-span-3 mr-3.25 mb-md' }}">
+				{% include "_components/title" with { title: section.title, extraClass: "mt-base mb-sm" } %}
+				{% if textMultiple %}
+					<p>{{ textMultiple }}</p>
+				{% endif %}
+                {% if link %}
+                    {% include "_components/link" with {
+                        linkField: link, 
+                        btnStyle: true,
+                        withArrow: true, 
+                        withBg: true, 
+                        extraClass: "mt-md"
+                    } %}
+                {% endif %}
+			</div>
+		{% endif %}
+		{% if items|length %}
+            {% if asAccordion %}
+                <ul class="w-full min-w-0 flex flex-col xl:flex-row gap-xs overflow-hidden" x-data="{ openItem: 0 }">
+                    {% for item in items %}
+                        <li class="accordion-card group rounded-base transition-[flex,width,height,background-color,padding] duration-500 ease-in-out cursor-pointer flex py-base xl:py-md" 
+                            @click="openItem == {{ loop.index }} ? openItem = 0 : openItem = {{ loop.index }}" 
+                            :class="openItem == {{ loop.index }} ? 'xl:w-27 xl:shrink-0 px-base sm:pl-sm sm:pr-lg bg-black' : 'xl:flex-1 bg-white items-center xl:justify-center px-base xl:px-0'"
+                            >
+                            <div class="flex flex-col xl:flex-row h-full w-full xl:w-auto">
+                                <div class="flex flex-row-reverse xl:flex-col justify-between xl:justify-start items-center gap-sm w-full xl:w-auto">
+                                    <span class="transition" :class="openItem == {{ loop.index }} ? 'rotate-45' : 'rotate-0'">
+                                        {{ svg('assets/icons/arrow-top-right.svg')|attr({ class:"w-1 text-prim" })}}
+                                    </span>
+                                    <span class="font-heading font-bold text-sm xl:[writing-mode:vertical-rl] xl:rotate-180 xl:mt-auto whitespace-nowrap" x-show="openItem != {{ loop.index }} || window.innerWidth >= 768" x-cloak>{{ item.title }}</span>
+                                </div>
+                                <div x-show="openItem == {{ loop.index }}" x-transition.opacity.duration.300ms class="text-white xl:pl-xs mt-sm xl:mt-0" x-cloak x-collapse>
+                                    <h3 class="font-heading font-bold text-sm mb-sm">{{ item.title }}</h3>
+                                    <p class="mb-sm">{{ item.textMultiple }}</p>
+                                    {% include "_components/link" with {
+                                        url: item.url,
+                                        label: 'More about'|t ~ ' ' ~ item.title|lower,
+                                        withArrow: true,
+                                        noBorderAnimation: true
+                                    } %}
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <ul class=" {{ noTitleText ? 'col-start-2 col-span-10' : 'con-start-4 xl:col-start-5 col-span-8' }} flex flex-col md:grid md:grid-cols-2 xl:grid-cols-3 gap-md md:gap-base">
+                    {% for item in items %}
+                        <li class="group w-full h-full">
+                            {% include "_components/card" with {
+                                url: item.url, 
+                                title: item.title, 
+                                text: item.textMultiple,
+                                linkLabel: 'More about'|t ~ ' ' ~ item.title, 
+                                withArrowCard: withArrowCard
+                            } %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+		{% endif %}
+	</div>
+</section>

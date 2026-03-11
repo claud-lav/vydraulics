@@ -13,6 +13,7 @@ settings:
     - seoKeywords
     - seoImage
     - seoImageDescription
+    - robots
   generalTabEnabled: '1'
   sitemapEnabledFields: ''
   sitemapTabEnabled: ''

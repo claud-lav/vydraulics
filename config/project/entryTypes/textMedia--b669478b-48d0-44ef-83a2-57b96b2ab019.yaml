@@ -116,6 +116,22 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            dateAdded: '2026-03-10T11:50:16+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: b26636b7-849b-4fb5-b0af-ecdfd309b7c4 # Tekst
+            handle: linksTitle
+            instructions: null
+            label: 'Links titel'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c5ccbc68-0ecf-467e-b3aa-d5d8ab9059e2
+            userCondition: null
+            warning: null
+            width: 100
+          -
             dateAdded: '2025-10-17T08:14:34+00:00'
             editCondition: null
             elementCondition: null
@@ -128,6 +144,22 @@ fieldLayouts:
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: 26e11a5a-fd34-4d1a-b8d2-9b88f1536a9a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-10T11:50:16+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: bb7becdd-3a77-49f6-bf93-f1fd1d9d8f9a # Link
+            handle: linkField2
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2717cc1a-0e1e-49b0-be0f-f1cc26b70c30
             userCondition: null
             warning: null
             width: 100

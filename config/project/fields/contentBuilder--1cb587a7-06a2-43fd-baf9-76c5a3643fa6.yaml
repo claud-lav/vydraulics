@@ -76,6 +76,14 @@ settings:
       __assoc__:
         -
           - uid
+          - 442c9c04-b80e-4f2a-9190-d20bf279fa47 # Optellende cijfers
+        -
+          - group
+          - Interactie
+    -
+      __assoc__:
+        -
+          - uid
           - 8da8895a-e435-4c1c-b380-2adaed160428 # Herbruikbare blok
         -
           - group

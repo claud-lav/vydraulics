@@ -1,7 +1,5 @@
 {% set sections = entry.contentBuilder.all() %}
 
-{# Bekijkt welke blocks je hebt gebouwt in je dashboard en verwijst door naar de juiste partial met de volgorde volgens het opbouw. Hierbij zal je een entry moeten aanspreken met section in de partials omdat je variable section is #}
-{# Zorg dat er ook een matrix entry bestaat met contentbuilder #}
 {% for section in sections %}
-    {% include "_blocks/" ~ section.type.handle|kebab with { index: loop.index } %}
+    {% include "_blocks/" ~ section.type.handle|kebab with { index: loop.index, isFirst: loop.first } %}
 {% endfor %}

@@ -11,10 +11,10 @@ settings:
       __assoc__:
         -
           - label
-          - Values
+          - Faq
         -
           - value
-          - values
+          - faq
         -
           - icon
           - ''
@@ -25,10 +25,66 @@ settings:
       __assoc__:
         -
           - label
-          - Faq
+          - Icons
         -
           - value
-          - faq
+          - icons
+        -
+          - icon
+          - ''
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - Checks
+        -
+          - value
+          - checks
+        -
+          - icon
+          - ''
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - Accordion
+        -
+          - value
+          - accordion
+        -
+          - icon
+          - ''
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - Grid
+        -
+          - value
+          - grid
+        -
+          - icon
+          - ''
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - Certificaten
+        -
+          - value
+          - certificates
         -
           - icon
           - ''

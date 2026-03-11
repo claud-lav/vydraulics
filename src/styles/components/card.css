@@ -1,0 +1,35 @@
+.card-fill {
+    @apply z-0;
+    background:
+        linear-gradient(to bottom right, var(--color-prim) 50%, transparent 50%),
+        transparent;
+    background-size: 250% 250%, 100% 100%;
+    background-position: 100% 100%, 0 0;
+    transition: background-position 0.8s ease, background-color 0.9s ease;
+    background-color: transparent;
+}
+
+.group:hover .card-fill {
+    background-position: 0% 0%, 0 0;
+    background-color: var(--color-prim);
+}
+
+.card-blog .rounded-base {
+    @apply relative;
+}
+
+.card-blog .rounded-base::before {
+    content: '';
+    @apply absolute inset-0 z-10 rounded-base;
+    background: linear-gradient(to bottom right, var(--color-prim) 50%, transparent 50%);
+    background-size: 250% 250%;
+    background-position: 100% 100%;
+    opacity: 0;
+    transition: background-position 0.8s ease, opacity 0.9s ease;
+}
+
+.group.card-blog:hover .rounded-base::before {
+    background-position: 0% 0%;
+    opacity: 1;
+    mix-blend-mode: multiply;
+}

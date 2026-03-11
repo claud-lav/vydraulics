@@ -1,11 +1,9 @@
-<section class="section">
-    <div class="container">
-        <div class="p-2 md:p-4 border md:text-center flex flex-col md:items-center justify-center">
-            {% include "_components/title" with { title: section.title } %}
-            <p class="max-w-40">{{ section.textMultiple }}</p>
-            {% if section.linkField %}
-                {% include "_components/link" with { linkField: section.linkField, btnStyle: true, extraClass: "mt-2" } %}
-            {% endif %}
-        </div>
+<section class="section section-padding bg-black text-white">
+    <div class="container container-grid">
+        {% include "_components/title" with { title: section.title, extraClass:'col-start-4 col-span-4' } %}
+        <div class="col-start-5 col-span-3 mt-md">{{ section.ckeSimple }}</div>
+        {% if section.linkField %}
+            {% include "_components/link" with { linkField: section.linkField, btnStyle: true, extraClass: "mt-md col-start-5 col-span-3" } %}
+        {% endif %}
     </div>
 </section>

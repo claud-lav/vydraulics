@@ -7,5 +7,5 @@
 }
 
 .container-grid {
-    @apply grid grid-cols-12;
+    @apply flex flex-col lg:grid lg:grid-cols-12;
 }

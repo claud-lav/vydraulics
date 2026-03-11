@@ -1,0 +1,68 @@
+{% set locations = craft.entries().section('locations').all() %}
+
+{% set locationsByCountry = {} %}
+{% for location in locations %}
+    {% set address = location.address.one() %}
+    {% if address and address.country %}
+        {% set country = address.countryCode %}
+        {% set countryName = address.country.getName() %}
+        {% set locationsByCountry = locationsByCountry|merge({ (countryName): (locationsByCountry[countryName] ?? [])|merge([location]) }) %}
+    {% endif %}
+{% endfor %}
+{% set sortedKeys = locationsByCountry|keys|sort %}
+{% set sorted = {} %}
+{% for key in sortedKeys %}
+    {% set sorted = sorted|merge({ (key): locationsByCountry[key] }) %}
+{% endfor %}
+{% set locationsByCountry = sorted %}
+
+<section class="section" data-locations-component>
+    <div class="container container-grid">
+        <div class="col-span-12 w-full relative">
+            {% include "_components/title" with { title: section.title, extraClass: "mb-sm md:absolute top-lg left-lg z-[1000] pointer-events-none" } %}
+            <div class="w-full aspect-4/5 md:aspect-[64/27] rounded-base overflow-hidden" data-locations-map>
+
+            </div>
+        </div>
+        <div class="col-start-2 col-span-10 flex flex-col gap-md mt-md md:mt-5.25">
+            {% for countryName, countryLocations in locationsByCountry %}
+                <div>
+                    <h3 class="font-heading font-bold text-sm mb-sm">{{ countryName }}</h3>
+                    <div class="flex flex-col md:grid md:grid-cols-2 xl:grid-cols-3 gap-sm">
+                        {% for location in countryLocations %}
+                            {% set address = location.address.one() %}
+                            <div class="flex flex-col gap-xs bg-white rounded-base py-1.75 px-sm text-base"
+                                data-locations-marker
+                                data-lat="{{ address.latitude }}"
+                                data-lng="{{ address.longitude }}"
+                                data-name="{{ location.title }}"
+                                data-address="{{ address.addressLine1 }}"
+                                data-postalcode="{{ address.postalCode }}"
+                                data-city="{{ address.locality }}"
+                                data-country-name="{{ countryName }}"
+                            >
+                                <h4 class="font-bold">{{ location.title }} <span class="font-normal">{{ location.text }}</span></h4>
+                                <span>
+                                    {{ address.addressLine1 }}<br>
+                                    {{ address.postalCode }} {{ address.locality }}
+                                </span>
+                                <div>
+                                    {% if location.tel %}
+                                        <div class="flex flex-row gap-0.5 items-center text-prim">
+                                            {% include "_components/link" with { url: 'tel:' ~ location.tel, label: location.tel, withArrow: true, noBorderAnimation: true } %}
+                                        </div>
+                                    {% endif %}
+                                    {% if location.eMail %}
+                                        <div class="flex flex-row gap-0.5 items-center text-prim">
+                                            {% include "_components/link" with { url: 'mailto:' ~ location.eMail, label: location.eMail, withArrow: true, noBorderAnimation: true } %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

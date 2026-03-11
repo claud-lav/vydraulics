@@ -25,5 +25,12 @@ export default defineConfig(({ command }) => ({
       host: "localhost",
       protocol: "ws",
     },
+    proxy: {
+      "/assets/fonts": {
+        target: "https://vydraulics.ddev.site",
+        changeOrigin: true,
+        secure: false,
+      },
+    },
   },
 }));

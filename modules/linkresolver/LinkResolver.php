@@ -14,7 +14,7 @@ use nystudio107\seomatic\helpers\Sitemap;
 
 class LinkResolver extends BaseModule
 {
-    private const REDIRECT_TYPES = ['external'];
+    private const REDIRECT_TYPES = ['external', 'anchor'];
 
     public function init(): void
     {
@@ -86,6 +86,13 @@ class LinkResolver extends BaseModule
 
         if ($typeHandle === 'external') {
             $linkValue = $entry->externalUrl ?? null;
+            if ($linkValue && $linkValue->getUrl()) {
+                return $linkValue->getUrl();
+            }
+        }
+
+        if ($typeHandle === 'anchor') {
+            $linkValue = $entry->internalLink ?? null;
             if ($linkValue && $linkValue->getUrl()) {
                 return $linkValue->getUrl();
             }

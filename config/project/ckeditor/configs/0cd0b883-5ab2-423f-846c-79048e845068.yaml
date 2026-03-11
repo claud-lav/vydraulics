@@ -1,9 +1,0 @@
-headingLevels: false
-name: Simple
-toolbar:
-  - heading
-  - '|'
-  - bold
-  - underline
-  - italic
-  - link

@@ -1,0 +1,97 @@
+columnSuffix: null
+handle: countingNumbers
+instructions: null
+name: 'Optellende cijfers'
+searchable: false
+settings:
+  addRowLabel: 'Add a row'
+  columns:
+    __assoc__:
+      -
+        - col1
+        -
+          __assoc__:
+            -
+              - heading
+              - Cijfer
+            -
+              - handle
+              - number
+            -
+              - width
+              - ''
+            -
+              - type
+              - number
+      -
+        - col2
+        -
+          __assoc__:
+            -
+              - heading
+              - 'Extra teken'
+            -
+              - handle
+              - character
+            -
+              - width
+              - ''
+            -
+              - type
+              - singleline
+      -
+        - col3
+        -
+          __assoc__:
+            -
+              - heading
+              - Titel
+            -
+              - handle
+              - title
+            -
+              - width
+              - ''
+            -
+              - type
+              - singleline
+      -
+        - col4
+        -
+          __assoc__:
+            -
+              - heading
+              - Tekst
+            -
+              - handle
+              - text
+            -
+              - width
+              - ''
+            -
+              - type
+              - multiline
+  defaults:
+    -
+      __assoc__:
+        -
+          - col1
+          - ''
+        -
+          - col2
+          - ''
+        -
+          - col3
+          - ''
+        -
+          - col4
+          - ''
+        -
+          - rowId
+          - a1dd50df-7baa-4c2b-83ba-104217fe611b
+  maxRows: null
+  minRows: null
+  staticRows: false
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Table

@@ -18,12 +18,11 @@ settings:
   minRelations: null
   previewMode: full
   restrictFiles: true
-  restrictLocation: true
+  restrictLocation: false
   restrictedDefaultUploadSubpath: null
   restrictedLocationSource: 'volume:f78d7b04-49b9-42bc-a2d9-0fa1bcac226c' # Grafisch
   restrictedLocationSubpath: '{ rootOwner.section ?? owner.owner.section ?? entry.section  }'
   selectionLabel: null
-  showCardsInGrid: false
   showSearchInput: true
   showSiteMenu: true
   showUnpermittedFiles: false

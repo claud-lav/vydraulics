@@ -1,9 +1,5 @@
 {% set socials = seomatic.site.sameAsLinks %}
 
-<pre>
-    {{ dump(socials) }}
-</pre>
-
 <ul class="flex flex-row gap-1 items-center">
     {% for item in socials %}
         {% if item.handle is same as 'youtube' %}

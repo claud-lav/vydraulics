@@ -1,35 +1,35 @@
 .hamburger {
-  @apply relative h-5 w-6 md:hidden hover:cursor-pointer;
+    @apply relative h-[2.625rem] w-[2.625rem] p-0.25 rounded-full bg-prim md:hidden hover:cursor-pointer; 
 }
 
 .hamburger-open {
-  @apply fixed top-2 right-6 z-2;
+    @apply relative z-20;
 }
 
 .hamburger-bar {
-  @apply absolute left-0 h-[0.175rem] bg-prim w-full transition-all duration-300;
+    @apply absolute left-1/2 -translate-x-1/2 h-[0.1rem] bg-white w-1.25 transition-all duration-300;
 }
 
 .hamburger-bar--top {
-  @apply top-0;
+    @apply top-[0.75rem];
 }
 
 .hamburger-bar--center {
-  @apply top-1/2 -translate-y-1/2;
+    @apply top-1/2 -translate-y-1/2;
 }
 
 .hamburger-bar--bottom {
-  @apply bottom-0;
+    @apply bottom-[0.75rem];
 }
 
 .hamburger-open .hamburger-bar--top {
-  @apply -translate-y-1/2 -rotate-45;
+    @apply top-1/2 -translate-y-1/2 -rotate-45;
 }
 
 .hamburger-open .hamburger-bar--center {
-  @apply opacity-0;
+    @apply opacity-0;
 }
 
 .hamburger-open .hamburger-bar--bottom {
-  @apply -translate-y-1/2 rotate-45;
+    @apply bottom-auto top-1/2 -translate-y-1/2 rotate-45;
 }

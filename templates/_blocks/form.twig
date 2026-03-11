@@ -1,10 +1,10 @@
 {% set form = section.form.one() %}
 
 <section class="section section-padding bg-black text-white">
-	<div class="container container-grid">
-		<div class="col-span-3 pr-[20%]">
-			{% include "_components/title" with { title: section.title, extraClass: 'text-md mb-md' } %}
-			<div>{{ section.ckeSimple }}</div>
+	<div class="container container-grid {{ isFirst ? 'gap-md md:gap-0'}}">
+		<div class="col-span-4 {{ not isFirst ? 'xl:col-span-3 pr-[20%]' }}">
+			{% include "_components/title" with { title: section.title, extraClass: 'mb-md' } %}
+			<div class="{{ isFirst ? 'md:pl-[33%]' : '' }}">{{ section.ckeSimple }}</div>
             {% if section.showContactInfo %}
                 {% set address = companyInfo.address.one() %}
                 <div class="mt-md flex flex-col gap-1.25">
@@ -30,7 +30,7 @@
                 </div>
             {% endif %}
 		</div>
-		<div class="col-span-6 flex flex-col items-center">
+		<div class="{{ isFirst ? 'col-start-6 col-span-5' : 'col-span-8 xl:col-span-6' }} flex flex-col items-center">
             <div class="max-w-33">
                 {% if form %}
                     {{ craft.formie.renderForm(form)}}

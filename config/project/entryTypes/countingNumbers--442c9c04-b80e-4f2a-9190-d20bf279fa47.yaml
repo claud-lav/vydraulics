@@ -1,0 +1,42 @@
+allowLineBreaksInTitles: false
+color: orange
+description: null
+fieldLayouts:
+  05b62371-5990-4ea9-8e08-8ce1a7934d17:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-03-10T11:23:36+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 0fef729c-00c4-43c4-9d5c-99e06d21addc # Optellende cijfers
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b1282f81-2e02-4b85-a1c4-5e9bafa774c0
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: bcc86146-7040-4543-bb44-1580bf37cdf5
+        userCondition: null
+    thumbFieldKey: null
+handle: countingNumbers
+hasTitleField: false
+icon: hashtag
+name: 'Optellende cijfers'
+showSlugField: false
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: 'Optellende cijfers'
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

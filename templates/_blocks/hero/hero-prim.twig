@@ -3,15 +3,15 @@
 {% set link2 = section.linkField2 %}
 
 <section class="section section-nmt bg-black text-white">
-    <div class="container container-grid py-2xl">
-        {% include "_components/title" with { title: section.title, extraClass: "leading-tight text-heading font-bold text-lg mb-xl col-start-1 col-span-5" } %}
+    <div class="container container-grid py-md md:py-2xl relative">
+        {% include "_components/title" with { title: section.title, extraClass: "md:mb-xl col-start-1 col-span-8 xl:col-span-6 relative z-1" } %}
         {% if text or link1 or link2 %}
-            <div class="col-start-2 col-span-4">
+            <div class="md:col-start-2 xl:col-start-2 col-span-6 xl:col-span-4 z-1">
                 {% if text %}
                     <div class="max-w-20">{{ text }}</div>
                 {% endif %}
                 {% if link1 or link2 %}
-                    <div class="flex flex-row gap-xs mt-md">
+                    <div class="flex flex-row flex-wrap gap-xs mt-md">
                         {% if link1 %}
                             {% include "_components/link" with { linkField: link1, btnStyle: true, withArrow: true } %}
                         {% endif %}
@@ -22,5 +22,6 @@
                 {% endif %}
             </div>
         {% endif %}
+        {{ svg('assets/icons/logo-visual.svg')|attr({class: 'absolute bottom-[10%] lg:top-[50%] lg:-translate-y-[50%] -right-[75%] md:-right-[50%] lg:right-0 h-auto w-[160%] md:w-[130%] lg:w-[50%] text-prim z-0'}) }}
     </div>
 </section>

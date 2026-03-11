@@ -67,7 +67,63 @@ fieldLayouts:
             uid: a7f0a83f-d5c4-4f6a-a056-f1bd527cb293
             userCondition: null
             warning: null
-            width: 100
+            width: 50
+          -
+            dateAdded: '2026-03-10T08:32:55+00:00'
+            editCondition: null
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: craft\fields\conditions\OptionsFieldConditionRule
+                  fieldUid: 880b0bcc-6186-4b71-b7e6-39d3afe13757 # Weergave
+                  layoutElementUid: 40504c54-5098-4510-8181-77bf5ff0668b
+                  operator: in
+                  uid: eb5eb330-46ed-4082-8757-258dfca03f47
+                  values:
+                    - solutions
+                    - industries
+              elementType: craft\elements\Entry
+              fieldContext: global
+            elementEditCondition: null
+            fieldUid: af908524-48f4-4030-b6b5-619ff14bacdc # Boolean
+            handle: asAccordion
+            instructions: null
+            label: 'Als Accordion'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 5d16e535-c17c-4013-b29b-e6ec859b2d02
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2026-03-10T15:49:29+00:00'
+            editCondition: null
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: craft\elements\conditions\entries\SectionConditionRule
+                  operator: in
+                  uid: 0b79f4d6-f7c7-439e-97f9-2ed8dec097ef
+                  values:
+                    - 925e875f-2662-48af-af0b-9828ecbfbabb # Solutions
+                    - 921c0d73-9e49-4b11-aeda-59d9a7d23434 # Industries
+              elementType: craft\elements\Entry
+              fieldContext: global
+            elementEditCondition: null
+            fieldUid: af908524-48f4-4030-b6b5-619ff14bacdc # Boolean
+            handle: showChildren
+            instructions: null
+            label: 'Toon enkel nakomelingen'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: dd4a4046-0bb0-43ee-b9ce-4ecb9124c8bd
+            userCondition: null
+            warning: null
+            width: 50
           -
             autocapitalize: true
             autocomplete: false

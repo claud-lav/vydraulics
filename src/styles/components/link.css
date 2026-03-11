@@ -37,3 +37,7 @@
 .link--no-border-animation {
     @apply after:w-full
 }
+
+.link-card:hover .link {
+    @apply after:bg-white
+}

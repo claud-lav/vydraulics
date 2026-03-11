@@ -1,0 +1,9 @@
+<div class="flex flex-row gap-0.75" x-data="share" data-url="{{ url }}" data-title="{{ title }}">
+    <button class="share group" @click="shareOn('linkedin')" aria-label="{{ 'share'|t }} LinkedIn">{{svg('assets/icons/linkedin.svg')|attr({class: "h-1 w-1"})}}</button>
+    <button class="share group" @click="shareOn('facebook')" aria-label="{{ 'share'|t }} Facebook">{{svg('assets/icons/facebook.svg')|attr({class: "h-1 w-1"})}}</button>
+    {# <button class="share group" @click="shareOn('twitter')" aria-label="{{ 'share'|t }} Twitter">{{svg('assets/icons/twitter.svg')|attr({class: "h-1 w-1"})}}</button> #}
+    <button class="share group" @click="copyLink()" aria-label="{{ 'copyLink'|t('site', 'Copy link') }}">
+        <span x-show="!copied">{{svg('assets/icons/link.svg')|attr({class: "h-1 w-1"})}}</span>
+        <span x-show="copied" x-cloak>{{svg('assets/icons/check.svg')|attr({class: "h-1 w-1"})}}</span>
+    </button>
+</div>

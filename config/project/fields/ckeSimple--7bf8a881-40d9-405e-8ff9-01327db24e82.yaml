@@ -7,11 +7,12 @@ settings:
   availableTransforms: ''
   availableVolumes: '*'
   characterLimit: null
-  ckeConfig: 0cd0b883-5ab2-423f-846c-79048e845068 # Simple
-  createButtonLabel: null
+  css: null
   defaultTransform: null
-  expandEntryButtons: false
   fullGraphqlData: true
+  headingLevels: false
+  js: null
+  options: null
   parseEmbeds: false
   purifierConfig: null
   purifyHtml: true
@@ -20,6 +21,13 @@ settings:
   showWordCount: false
   sourceEditingGroups:
     - __ADMINS__
+  toolbar:
+    - heading
+    - '|'
+    - bold
+    - underline
+    - italic
+    - link
   wordLimit: null
 translationKeyFormat: null
 translationMethod: none

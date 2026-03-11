@@ -1,10 +1,32 @@
-{% set text = section.ckeSimple %}
-{% set link1 = section.linkField %}
-{% set link2 = section.linkField2 %}
+{% set title = title ?? section.title ?? null %}
+{% set text = text ?? section.ckeSimple ?? null %}
+{% set link1 = link1 ?? section.linkField ?? null %}
+{% set link2 = link2 ?? section.linkField2 ?? null %}
+
+{% set blogSection = entry.section.handle in ['blog'] %}
 
 <section class="section section-nmt bg-black text-white">
-    <div class="container container-grid py-2xl">
-        {% include "_components/title" with { title: section.title, extraClass: "leading-tight text-heading font-bold text-lg mb-xl col-start-2 col-span-5" } %}
+    {% if (entry and entry.level > 1) or blogSection %}
+        {% set parent = entry.parent %}
+        <div class="container flex flex-row items-center gap-xs">
+            <a class="py-0.5 transition border-b border-b-transparent hover:border-b-prim" href="{{ currentSite.baseUrl }}">{{ svg('assets/icons/home.svg')|attr({ class:"text-white w-1 h-auto"}) }}</a>
+            {{ svg('assets/icons/arrow-right.svg')|attr({ class:"w-1 h-auto text-white"}) }}
+            {% if parent %}
+                {% if parent and parent.url %}
+                    <a class="py-0.5 transition border-b border-b-transparent hover:border-b-prim" href="{{ parent.url }}">{{ parent.title }}</a>
+                {% else %}
+                    <span>{{ parent.title }}</span>
+                {% endif %}
+            {% endif %}
+            {% if blogSection %}
+                <a class="py-0.5 transition border-b border-b-transparent hover:border-b-prim" href="{{ blogFixedContent.internalLink.url }}">{{ blogFixedContent.internalLink.label }}</a>
+            {% endif %}
+            {{ svg('assets/icons/arrow-right.svg')|attr({ class:"w-1 h-auto text-white"}) }}
+            <span class="py-0.5">{{ title|truncate(30) }}</span>
+        </div>
+    {% endif %}
+    <div class="container container-grid py-2xl relative">
+        {% include "_components/title" with { title: title, extraClass: "mb-xl col-start-2 col-span-5" } %}
         {% if text or link1 or link2 %}
             <div class="col-start-3 col-span-5">
                 {% if text %}
@@ -22,5 +44,6 @@
                 {% endif %}
             </div>
         {% endif %}
+        {{ svg('assets/icons/logo-visual.svg')|attr({class: 'absolute top-[50%] -translate-y-[50%] right-0 h-auto w-[50%] text-prim'}) }}
     </div>
 </section>

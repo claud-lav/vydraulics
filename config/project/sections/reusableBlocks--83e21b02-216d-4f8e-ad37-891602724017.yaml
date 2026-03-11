@@ -2,7 +2,7 @@ defaultPlacement: end
 enableVersioning: true
 entryTypes:
   -
-    uid: 7ba66ae6-8f74-4654-bf31-85557659bb59 # Content builder
+    uid: 809abac6-c0fa-4e26-ace3-b78963f017f1 # Herbuikbare Blok
 handle: reusableBlocks
 maxAuthors: 1
 name: 'Herbruikbare blokken'
@@ -13,7 +13,7 @@ previewTargets:
     urlFormat: '{url}'
 propagationMethod: all
 siteSettings:
-  19c6391b-a582-4651-b999-d4761e7a122c: # vydraulics
+  19c6391b-a582-4651-b999-d4761e7a122c: # Vydraulics EN
     enabledByDefault: true
     hasUrls: false
     template: null

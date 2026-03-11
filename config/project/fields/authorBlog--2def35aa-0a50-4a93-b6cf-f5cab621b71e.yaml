@@ -1,0 +1,25 @@
+columnSuffix: null
+handle: authorBlog
+instructions: null
+name: Auteur
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  defaultPlacement: end
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
+  selectionLabel: null
+  showSearchInput: true
+  showSiteMenu: true
+  showUnpermittedEntries: false
+  showUnpermittedSections: false
+  sources:
+    - 'section:0db920fc-65a8-4958-a4ae-28660f9e88b3' # Auteurs
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: list-inline
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Entries

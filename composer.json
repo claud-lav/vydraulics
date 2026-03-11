@@ -2,8 +2,9 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "craftcms/ckeditor": "^4.2.0",
-    "craftcms/cms": "^5.9.0",
+    "craftcms/ckeditor": "^5.1.0",
+    "craftcms/cms": "^5.9.15",
+    "craftcms/feed-me": "^6.11.0",
     "craftcms/postmark": "^3.1.0",
     "mutation/translate": "^4.2.1",
     "nystudio107/craft-retour": "^5.0.3",
@@ -37,5 +38,12 @@
       "modules\\languageredirect\\": "modules/languageredirect/",
       "modules\\linkresolver\\": "modules/linkresolver/"
     }
-  }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://composer.craftcms.com",
+      "canonical": false
+    }
+  ]
 }

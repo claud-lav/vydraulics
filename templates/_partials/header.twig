@@ -4,7 +4,7 @@
 {% set logoInverted = companyInfo.logoInverted.one() %}
 
 <header class="w-full">
-	<div class="py-0.5 w-full center">
+	<div class="py-0.5 w-full hidden md:flex flex-row items-center justify-center relative z-30">
 		<div class="container flex flex-row justify-between">
 			<div></div>
 			<nav>
@@ -43,8 +43,8 @@
 		</div>
 	</div>
 	<div class="w-full py-2 bg-black text-white center">
-		<div class="container flex justify-between items-center" x-data="menu()" x-init="init()" x-bind:class="{ 'open': open }">
-			<div class="w-15 h-fit">
+		<div class="container relative flex justify-between items-center" x-data="menu()" x-init="init()" x-bind:class="{ 'open': open }">
+			<div class="w-12 md:w-15 h-fit">
 				{% if logoInverted %}
 					<a href="{{ currentSite.baseUrl }}" class="w-full h-2">
 						{% include "_components/asset" with {
@@ -56,25 +56,45 @@
 				{% endif %}
 			</div>
 			<div class="hamburger" @click="open = ! open" :class="open ? 'hamburger-open' : ''">
-				<div class="hamburger-bar hamburger-bar--top transition origin-right"></div>
-				<div class="hamburger-bar hamburger-bar--center transition"></div>
-				<div class="hamburger-bar hamburger-bar--bottom transition origin-right"></div>
+				<div class="hamburger-bar hamburger-bar--top"></div>
+				<div class="hamburger-bar hamburger-bar--center"></div>
+				<div class="hamburger-bar hamburger-bar--bottom"></div>
 			</div>
-			<nav class="md:static top-0 left-0 bg-black md:bg-transparent z-1 h-screen md:h-fit w-screen md:w-fit p-2 pt-8 lg:p-0" x-show="open">
+			<nav class="fixed z-10 md:static top-0 left-0 bg-black md:bg-transparent z-1 h-screen md:h-fit w-screen md:w-fit p-2 pt-8 lg:p-0" x-show="open" x-cloak x-transition>
 				<ul class="flex flex-col md:flex-row items-center gap-2 w-full h-full">
 					{% for item in navigation %}
 						{% if item.showCollection %}
                             {% set collectionType = item.collection.value %}
                             {% set collection = craft.entries().section(item.collection.value).level(1).all() %}
-                            <li x-data="{ openCollection: false }">
-								<a class="{{ currentUrl == item.url ? '' }} link" href="{{ item.url }}" aria-label="{{ 'Ga naar'|t ~ item.title }}" target="{{ item.type.handle is same as 'external' ? '_blank' : '_self' }}" rel="{{ item.type.handle is same as 'external' ? 'noopener noreferrer' : '' }}" @click="window.innerWidth < 1280 && (open = false)">
+                            <li x-data="{ openCollection: false }" @click.outside="openCollection = false">
+                                <button class="link" @click="openCollection = ! openCollection" x-show="!openCollection" >
+									<span>{{ item.headLabel is not null ? item.headLabel : item.title }}</span>
+                                    {{ svg('assets/icons/chevron-down.svg')|attr({ class:"text-prim w-1 h-auto" })}}
+                                </button>
+								<a class="{{ currentUrl == item.url ? '' }} link" href="{{ item.url }}" 
+                                    aria-label="{{ 'Ga naar'|t ~ item.title }}" 
+                                    target="{{ item.type.handle is same as 'external' ? '_blank' : '_self' }}" 
+                                    rel="{{ item.type.handle is same as 'external' ? 'noopener noreferrer' : '' }}" 
+                                    @click="window.innerWidth < 1280 && (open = false)"
+                                    x-show="openCollection"
+                                >
 									<span>{{ item.headLabel is not null ? item.headLabel : item.title }}</span>
                                     {{ svg('assets/icons/chevron-down.svg')|attr({ class:"text-prim w-1 h-auto" })}}
 								</a>
-                                <ul class="absolute w-full pop-nav flex flex-row" x-show="openCollection" x-cloak>
+                                <ul class="absolute left-0 top-[calc(100%+2rem)] w-full! pop-nav flex flex-row justify-between" x-show="openCollection" x-cloak>
                                     {% for collectionItem in collection %}
+                                        {% set children = collectionItem.children %}
                                         <li>
-                                        {% include "_components/link" with { url: collectionItem.url, label: collectionItem.title, withArrow: true } %}
+                                            {% include "_components/link" with { url: collectionItem.url, label: collectionItem.title, withArrow: true, noBorderAnimation: true } %}
+                                            {% if children|length %}
+                                                <ul class="mt-xs flex flex-col gap-xs">
+                                                    {% for child in children %}
+                                                        <li>
+                                                            <a class="transition hover:text-prim" href="{{ child.url }}">{{ child.title }}</a>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            {% endif %}
                                         </li>
                                     {% endfor %}
                                 </ul>

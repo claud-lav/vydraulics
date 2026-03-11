@@ -53,6 +53,38 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            dateAdded: '2026-03-10T15:26:08+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 7bf8a881-40d9-405e-8ff9-01327db24e82 # Tekst
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d6da1685-06f7-4540-9ac3-b20e9d4cd56a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-10T12:03:08+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: bb7becdd-3a77-49f6-bf93-f1fd1d9d8f9a # Link
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0f4b0646-6439-4366-9b26-b9ae9bc2e48e
+            userCondition: null
+            warning: null
+            width: 100
+          -
             dateAdded: '2026-03-09T13:18:34+00:00'
             editCondition: null
             elementCondition:
@@ -93,7 +125,7 @@ fieldLayouts:
                   operator: in
                   uid: 6ed18c16-3d77-47c3-b773-0661f69962d7
                   values:
-                    - values
+                    - icons
               elementType: craft\elements\Entry
               fieldContext: global
             elementEditCondition: null
@@ -108,12 +140,69 @@ fieldLayouts:
             userCondition: null
             warning: null
             width: 100
+          -
+            dateAdded: '2026-03-10T15:25:38+00:00'
+            editCondition: null
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: craft\fields\conditions\OptionsFieldConditionRule
+                  fieldUid: 8f0db651-05cb-4d73-9531-29f24587491d # Lijst type
+                  layoutElementUid: b28436f2-3bfa-4892-9297-2d30fb77615c
+                  operator: in
+                  uid: 4a480126-eebc-4c85-9003-b41363c71fff
+                  values:
+                    - checks
+              elementType: craft\elements\Entry
+              fieldContext: global
+            elementEditCondition: null
+            fieldUid: 43a90934-c974-41c1-9585-fb96d742bec9 # Tekst Lijst
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0545c778-2813-4984-bc80-45ebd7a0bf9a
+            userCondition: null
+            warning: null
+            width: 100
         name: Content
         uid: 1a7c9a4f-fb69-4b82-a5fa-6477b2f7d9e6
         userCondition: null
       -
         elementCondition: null
-        name: Layout
+        elements:
+          -
+            dateAdded: '2026-03-11T10:15:53+00:00'
+            editCondition: null
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: craft\fields\conditions\OptionsFieldConditionRule
+                  fieldUid: 8f0db651-05cb-4d73-9531-29f24587491d # Lijst type
+                  layoutElementUid: b28436f2-3bfa-4892-9297-2d30fb77615c
+                  operator: in
+                  uid: 5086f56e-5d2f-4114-bae5-4e32c2574bd7
+                  values:
+                    - icons
+              elementType: craft\elements\Entry
+              fieldContext: global
+            elementEditCondition: null
+            fieldUid: 1a9192ca-f304-4288-bef7-3d8252065024 # Boolean On
+            handle: withBg
+            instructions: null
+            label: 'Met achtergrond'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6813195d-ed8a-4ac6-abcd-3706bee1bcfe
+            userCondition: null
+            warning: null
+            width: 100
+        name: Instellingen
         uid: f254138c-28c6-43ce-bd3b-f4be31ecccd0
         userCondition: null
     thumbFieldKey: null

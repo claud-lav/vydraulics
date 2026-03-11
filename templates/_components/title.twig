@@ -1,8 +1,10 @@
+{% set index = index ?? null %}
 {% set title = title ?? null %}
 {% set extraClass = extraClass ?? null %}
+{% set overwriteSize = overwriteSize ?? null %}
 
-{% if index is same as 1 %}
-    <h1 class="{{ extraClass }}">{{ title|nl2br }}</h1>
+{% if index is same as 1 or not index %}
+    <h1 class="{{ extraClass ?? '' }} {{ overwriteSize ?? 'text-md md:text-lg' }}">{{ title|nl2br }}</h1>
 {% else %}
-    <h2 class="{{ extraClass }}">{{ title|nl2br }}</h2>
+    <h2 class="{{ extraClass ?? '' }} {{ overwriteSize ?? 'text-md' }}">{{ title|nl2br }}</h2>
 {% endif %}

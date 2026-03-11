@@ -26,4 +26,8 @@ return GeneralConfig::create()
     ->enableTemplateCaching(true)
     // Cache duration: 0 = indefinite (until content changes invalidate it)
     ->cacheDuration(0)
+    ->timezone('Europe/Brussels')
+    ->defaultCpLocale('nl-BE')
+    ->defaultCountryCode('BE')
+    ->maxRevisions(20)
 ;

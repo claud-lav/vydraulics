@@ -1,3 +1,4 @@
+allowLineBreaksInTitles: false
 color: null
 description: null
 fieldLayouts:
@@ -8,15 +9,40 @@ fieldLayouts:
         elementCondition: null
         elements:
           -
+            dateAdded: '2026-03-11T08:35:02+00:00'
+            editCondition: null
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: craft\elements\conditions\entries\SectionConditionRule
+                  operator: in
+                  uid: 724be8d3-3677-415e-8aac-4e944210da96
+                  values:
+                    - b9ccf89e-dfed-4115-885f-a4fa59fe0da5 # Vaste content blog
+              elementType: craft\elements\Entry
+              fieldContext: global
+            elementEditCondition: null
+            fieldUid: 4df51339-725b-4b93-9923-51fd75ff7503 # Interne link
+            handle: null
+            instructions: null
+            label: Overzichtspagina
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 01fe43b6-5f8b-4b3e-9e0e-1477dc211a16
+            userCondition: null
+            warning: null
+            width: 100
+          -
             dateAdded: '2025-10-27T11:10:10+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 1cb587a7-06a2-43fd-baf9-76c5a3643fa6 # Content Builder
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -27,6 +53,7 @@ fieldLayouts:
         name: Content
         uid: e3d448ff-7416-453a-b6a9-c0556e12ce56
         userCondition: null
+    thumbFieldKey: null
 handle: fixedContent
 hasTitleField: false
 icon: memo-circle-info
@@ -38,3 +65,4 @@ slugTranslationMethod: site
 titleFormat: '{section.name}'
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
+uiLabelFormat: '{title}'

@@ -1,0 +1,25 @@
+<section class="section">
+    <div class="container container-grid items-center">
+        <div class="bg-white text-black col-span-6 rounded-base p-lg">
+            <ul class="w-full flex flex-row flex-wrap justify-center gap-md">
+                {% for item in section.textList %}
+                    <li class="w-[calc((100%-6rem)/3)]">
+                        <div>
+                            <span class="block text-prim h-2 w-2 rounded-full border border-prim center">{{ svg('assets/icons/check.svg')|attr({ class:"w-1 h-auto" }) }}</span>
+                            <p class="mt-xs">{{ item.text }}</p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-start-8 col-span-4">
+            {% include "_components/title" with {
+                title: section.title, 
+                extraClass: 'mb-md'
+            } %}
+            <div class="cke-simple">
+                {{ section.ckeSimple }}
+            </div>
+        </div>
+    </div>
+</section>

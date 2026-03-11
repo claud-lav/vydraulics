@@ -5,20 +5,18 @@ name: 'Slider type'
 searchable: false
 settings:
   customOptions: false
+  iconsOnly: false
   options:
     -
       __assoc__:
         -
           - label
-          - 'Selecteer een type'
+          - Brands
         -
           - value
-          - ''
+          - brands
         -
           - icon
-          - ''
-        -
-          - color
           - ''
         -
           - default
@@ -27,36 +25,16 @@ settings:
       __assoc__:
         -
           - label
-          - Afbeeldingen
+          - Timeline
         -
           - value
-          - images
+          - timeline
         -
           - icon
-          - ''
-        -
-          - color
-          - ''
-        -
-          - default
-          - ''
-    -
-      __assoc__:
-        -
-          - label
-          - 'Tekst en media'
-        -
-          - value
-          - textMedia
-        -
-          - icon
-          - ''
-        -
-          - color
           - ''
         -
           - default
           - ''
 translationKeyFormat: null
 translationMethod: none
-type: craft\fields\Dropdown
+type: craft\fields\ButtonGroup

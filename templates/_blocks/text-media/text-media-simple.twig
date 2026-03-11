@@ -1,17 +1,32 @@
 {% set img = section.img.one() %}
+{% set linksTitle = section.linksTitle ?? null %}
+{% set link1 = section.linkField ?? null %}
+{% set link2 = section.linkField2 ?? null %}
 
 <section class="section {{ section.withBg ? 'section-padding bg-white'}}">
-	<div class="container grid md:grid-cols-2 gap-2 md:gap-4 items-center">
+	<div class="container container-grid items-center">
 		{% if img %}
-			<div class="rounded-base overflow-hidden">
-				{% include "_components/asset" with { asset: img, size: 'half' } %}
+			<div class="h-full rounded-base overflow-hidden col-span-6 {{ section.switch ? 'col-start-7' }}">
+				{% include "_components/asset" with { asset: img, size: 'half', class: 'h-full w-full object-cover' } %}
 			</div>
 		{% endif %}
-		<div class="{{ section.switch ? '-order-1' : '' }}">
-			{% include "_components/title" with { title: section.title, extraClass: 'font-heading font-bold text-md leading-tight mb-md' } %}
+		<div class="col-span-4 {{ section.switch ? '-order-1 col-start-2' : 'col-start-8' }}">
+			{% include "_components/title" with { title: section.title, extraClass: 'mb-md' } %}
 			<div>{{ section.ckeSimple }}</div>
-			{% if section.linkField %}
-				{% include "_components/link" with { linkField: section.linkField, btnStyle: true, withBg: true, withArrow:true, extraClass: "mt-md" } %}
+			{% if link1 or link2 %}
+				<div class="mt-md">
+					{% if linksTitle %}
+						<span class="block mb-xs font-bold">{{ linksTitle }}</span>
+					{% endif %}
+					<div class="flex flex-row flex-wrap gap-xs">
+						{% if link1 %}
+							{% include "_components/link" with { linkField: link1, btnStyle: true, withBg: true, withArrow:true } %}
+						{% endif %}
+						{% if link2 %}
+							{% include "_components/link" with { linkField: link2, btnStyle: true, withArrow:true, extraClass: "text-prim hover:text-white" } %}
+						{% endif %}
+					</div>
+				</div>
 			{% endif %}
 		</div>
 	</div>

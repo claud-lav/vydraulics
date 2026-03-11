@@ -37,18 +37,18 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            dateAdded: '2025-10-08T10:51:41+00:00'
+            dateAdded: '2026-03-10T12:25:31+00:00'
             editCondition: null
             elementCondition: null
             elementEditCondition: null
-            fieldUid: 58a18928-e4be-4f0f-8851-7a1fc536130a # Tekst
+            fieldUid: 7bf8a881-40d9-405e-8ff9-01327db24e82 # Tekst
             handle: null
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 2e9c3639-57ce-4298-9198-c780d3693a0c
+            uid: 27dac3a0-0e9a-4dd7-977f-6a128730ca95
             userCondition: null
             warning: null
             width: 100

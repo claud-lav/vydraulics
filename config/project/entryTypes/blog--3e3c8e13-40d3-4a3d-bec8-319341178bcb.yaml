@@ -1,3 +1,4 @@
+allowLineBreaksInTitles: false
 color: null
 description: null
 fieldLayouts:
@@ -16,7 +17,6 @@ fieldLayouts:
             disabled: false
             elementCondition: null
             id: null
-            includeInCards: false
             inputType: null
             instructions: null
             label: null
@@ -25,7 +25,6 @@ fieldLayouts:
             name: null
             orientation: null
             placeholder: null
-            providesThumbs: false
             readonly: false
             required: true
             size: null
@@ -41,12 +40,11 @@ fieldLayouts:
             dateAdded: '2025-10-27T12:59:22+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: ecc8b910-8de2-4dff-9f56-b8c2fb1a5ea1 # Tekst 
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -58,12 +56,11 @@ fieldLayouts:
             dateAdded: '2025-10-31T11:17:30+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: d419b9ec-3b83-48e2-a5d5-7d675cd35d06 # Afbeelding
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -71,9 +68,26 @@ fieldLayouts:
             userCondition: null
             warning: null
             width: 100
+          -
+            dateAdded: '2026-03-11T08:09:56+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 2def35aa-0a50-4a93-b6cf-f5cab621b71e # Auteur
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8d8cad9b-a09b-40d1-8624-560207972a3b
+            userCondition: null
+            warning: null
+            width: 100
         name: Content
         uid: b80a966a-cb62-4fb8-8ea3-52ff4c408076
         userCondition: null
+    thumbFieldKey: null
 handle: blog
 hasTitleField: true
 icon: folder
@@ -85,3 +99,4 @@ slugTranslationMethod: site
 titleFormat: null
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
+uiLabelFormat: '{title}'

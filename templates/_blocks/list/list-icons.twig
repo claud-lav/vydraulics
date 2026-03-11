@@ -1,11 +1,19 @@
 {% set listItems = section.listTitleTextIcon.all() %}
+{% set withBg = section.withBg %}
 
-<section class="section bg-black py-2xl">
+<section class="section {{ withBg ? 'bg-black section-padding text-white' : '' }}">
     <div class="container container-grid">
-        <div class="col-start-5 col-span-8 grid grid-cols-3 gap-md text-white">
-            <div>
-                {% include "_components/title" with { title: section.title, extraClass: 'font-heading font-bold text-md leading-tight'} %}
+        {% if not withBg %}
+            <div class="col-span-3">
+                {% include "_components/title" with { title: section.title } %}
             </div>
+        {% endif %}
+        <div class="col-start-4 col-span-9 {{ withBg ? 'xl:col-start-5 xl:col-span-8' }} md:grid md:grid-cols-2 lg:grid-cols-3 gap-md">
+            {% if withBg %}
+                <div>
+                    {% include "_components/title" with { title: section.title } %}
+                </div>
+            {% endif %}
             {% for item in listItems %}
                 {% set graphic = item.graphic.one() %}
                 <div>

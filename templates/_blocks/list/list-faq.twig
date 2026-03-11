@@ -1,0 +1,35 @@
+<section class="section">
+    <div class="container container-grid">
+        <div class="col-start-2 col-span-3">
+            {% include "_components/title" with {
+                title: section.title, 
+                extraClass: 'uppercase mb-md'
+            } %}
+            <div class="mb-md cke-simple">{{ section.ckeSimple }}</div>
+            {% if section.linkField %}
+                {% include "_components/link" with {
+                    linkField: section.linkField, 
+                    btnStyle: true,
+                    withBg: true, 
+                    withArrow: true
+                } %}
+            {% endif %}
+        </div>
+        <div class="col-start-6 col-span-7 flex flex-col gap-base" x-data="{ openItem: 0 }">
+            {% for item in section.listTitleText %}
+                <div class="transition border border-prim p-sm rounded-base hover:bg-white hover:border-white hover:cursor-pointer" 
+                    @click="openItem == {{ loop.index }} ? openItem = 0 : openItem = {{ loop.index }}"
+                    :class="openItem == {{ loop.index }} ? 'bg-white border-white' : ''"
+                >
+                    <div class="flex flex-row justify-between gap-xs">
+                        <h3>{{ item.title }}</h3>
+                        {{ svg('assets/icons/arrow-top-right.svg')|attr({ class:"w-1 h-auto text-prim"}) }}
+                    </div>
+                    <div class="before:content-[''] before:h-xs before:relative before:block" x-show="openItem == {{ loop.index }}" x-collapse>
+                        <p>{{ item.text|nl2br }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

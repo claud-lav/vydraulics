@@ -1,13 +1,47 @@
+{% set author = entry.authorBlog.one() %}
+
+{% include "_blocks/hero/hero-sec" with {
+    title: entry.title,
+} %}
+
 <section class="section section-top">
-    <div class="container container-small">
-        {% include "_components/title" with { title: entry.title, index: 1 } %}
-        <div class="cke">
+    <div class="container container-grid">
+        <div class="col-start-4 col-span-6 cke-expanded">
             {{ entry.ckeExpanded }}
+        </div>
+        <div class="col-start-4 col-span-6 mt-xl pt-md border-t-[1.5px] border-t-white flex flex-row justify-between">
+            {% if author %}
+                <div class="flex flex-row gap-base items-center">
+                    <div class="w-3.75 h-3.75 bg-black rounded-full overflow-hidden">
+                        {% if author.img.one() %}
+                            {% include "_components/asset" with { asset: author.img.one(), size: 'third', class: 'w-full h-full object-cover' } %}
+                        {% endif %}
+                    </div>
+                    <p>
+                        {{ 'Contributed by'|t }} {{ author.title }}<br>
+                        {{ author.role }}
+                    </p>
+                </div>
+            {% endif %}
+            <div>
+                <span class="block text-right font-bold mb-xs">{{ 'Share this article'|t }}</span>
+                {% include "_components/share" with {
+                    url: entry.url, 
+                    title: entry.title
+                } %}
+            </div>
         </div>
     </div>
 </section>
+{% include "_blocks/content-display/content-display-blogs" with {
+    showSome: true, 
+    linkTitle: 'Need to find out more?'|t,
+    url: blogFixedContent.internalLink.url,
+    linkBtnTitle: 'Discover all news'|t, 
+    withBg: true
+} %}
 
-{% include "_pages/content-builder" with {
+{# {% include "_pages/content-builder" with {
     sections: blogFixedContent.contentBuilder.all(),
     startIndex: 1
-} %}
+    £+/. } %} #}

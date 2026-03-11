@@ -1,0 +1,54 @@
+columnSuffix: null
+handle: displaySelection
+instructions: null
+name: 'Weergave selectie'
+searchable: false
+settings:
+  customOptions: false
+  iconsOnly: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - Alle
+        -
+          - value
+          - showAll
+        -
+          - icon
+          - ''
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'Zelf kiezen'
+        -
+          - value
+          - selfSelect
+        -
+          - icon
+          - ''
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'Nakomelingen '
+        -
+          - value
+          - children
+        -
+          - icon
+          - ''
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\ButtonGroup

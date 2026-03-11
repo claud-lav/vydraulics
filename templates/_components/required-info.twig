@@ -1,13 +1,13 @@
 {% set contact = craft.entries.section('contact').one() %}
 
-<div class="container flex justify-between items-center text-xs border-t-2 border-t-white py-sm">
-    <div class="flex items-center gap-4">
+<div class="container flex flex-col md:flex-row justify-between items-center gap-1 text-xs border-t-2 border-t-white py-sm">
+    <div class="flex flex-col md:flex-row items-center gap-0.5 md:gap-4">
         <p>© {{ '2026 Vydraulics | All Rights Reserved'|t }}</p>
         {% if companyInfo.btwNum %}
             <p>{{ companyInfo.btwNum }}</p>
         {% endif %}
     </div>
-    <div>
+    <div class="flex flex-row flex-wrap items-center justify-center gap-0.25">
         <a href="">{{' Algemene voorwaarden'|t }} |</a>
         <a href="">{{ 'Privacy beleid'|t }} |</a>
         <a href="">{{ 'Cookie beleid'|t }}</a>

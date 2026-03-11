@@ -2,24 +2,36 @@
 {% set title = title ?? null %}
 {% set text = text ?? null %}
 {% set linkLabel = linkLabel ?? null %}
+{% set withArrowCard = withArrowCard ?? null %}
 
-<a class="link-card w-full h-full" href="{{ url }}">
-	<div class="w-full h-full p-sm rounded-base group-hover:bg-prim group-hover:text-white flex flex-col justify-between">
-		<div>
-			{% if index is same as 1 or noTitleText %}
-				<h2 class="font-heading font-bold text-sm mb-xs">{{ item.title }}</h2>
-			{% else %}
-				<h3 class="font-heading font-bold text-sm mb-xs">{{ item.title }}</h3>
-			{% endif %}
-			<p class="mb-base">{{ item.textMultiple }}</p>
-		</div>
-		{% include "_components/link" with { 
-            noLink: true, 
-            label: linkLabel, 
-            withArrow: true,
-            noBorderAnimation: true, 
-            extraClass: "text-prim group-hover:text-white"
+<a class="link-card w-full h-full group" href="{{ url }}">
+	<div class="card-fill relative overflow-hidden w-full h-full p-sm rounded-base group-hover:text-white flex {{ withArrowCard ? 'flex-row gap-sm' : 'flex-col justify-between' }}">
+		{% if withArrowCard %}
+            <div class="transition group-hover:rotate-45 text-prim group-hover:text-white w-fit h-fit">
+                {{ svg('assets/icons/arrow-top-right.svg')|attr({ class: "w-1 h-auto"}) }}
+            </div>
+        {% endif %}
+        {% if withArrowCard %}
+            <div class="h-full flex flex-col justify-between">
+        {% endif %}
+            <div>
+                {% if index is same as 1 or noTitleText %}
+                    <h2 class="font-heading font-bold text-sm mb-xs">{{ item.title }}</h2>
+                {% else %}
+                    <h3 class="font-heading font-bold text-sm mb-xs">{{ item.title }}</h3>
+                {% endif %}
+                <p class="mb-base">{{ item.textMultiple }}</p>
+            </div>
+            {% include "_components/link" with { 
+                noLink: true, 
+                label: linkLabel, 
+                withArrow: true,
+                noBorderAnimation: true, 
+                extraClass: "text-prim group-hover:text-white"
 
-        } %}
+            } %}
+        {% if withArrowCard %}
+            </div>
+        {% endif %}
 	</div>
 </a>

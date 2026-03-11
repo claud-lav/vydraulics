@@ -1,18 +1,25 @@
-{% if section.showSome %}
-	{% set link = section.linkField %}
+{% set showSome = showSome ?? section.showSome ?? false %}
+
+{% if showSome %}
+	{% set link = link ?? section.linkField ?? null %}
+	{% set url = url ?? null %}
+	{% set linkBtnTitle = linkBtnTitle ?? null %}
+    {% set linkTitle = linkTitle ?? section.linkTitle ?? null %}
+    {% set title = title ?? section.title ?? null %}
 	{% set blogs = craft.entries().section('blog').with(['img']).limit(3).all() %}
 	{% set firstBlog = blogs|slice(0, 1)|first %}
 	{% set otherBlogs = blogs|slice(1, 2) %}
+    {% set withBg = withBg ?? null %}
 
-	<section class="section {{ index is same as 1 ? 'section-top' }}">
-		<div class="container container-grid items-center">
+	<section class="section">
+		<div class="container container-grid items-center {{ withBg ? 'bg-white py-2xl rounded-base' }}">
 			<div class="col-start-2 col-span-4">
-				{% include "_components/title" with { title: section.title, extraClass: 'font-heading font-bold text-md mb-md'} %}
-				<a href="{{ firstBlog.url }}" class="group">
+				{% include "_components/title" with { title: title, extraClass: 'mb-md'} %}
+				<a href="{{ firstBlog.url }}" class="card-blog group">
 					<div>
 						<div class="rounded-base overflow-hidden">
 							{% if firstBlog.img.one() %}
-								{% include "_components/asset" with { asset: firstBlog.img.one() } %}
+								{% include "_components/asset" with { asset: firstBlog.img.one(), class: "card-blog-img" } %}
 							{% endif %}
 						</div>
 						<div class="flex flex-row items-end justify-between w-full mt-sm">
@@ -21,20 +28,25 @@
 						</div>
 					</div>
 				</a>
-				{% if link %}
+				{% if link or url %}
 					<div class="mt-xl">
-						<h3>{{ section.linkTitle }}</h3>
-						{% include "_components/link" with { linkField: link, btnStyle: true, withBg: true, withArrow: true, extraClass: 'mt-base' } %}
+						<h3>{{ linkTitle }}</h3>
+                        {% if link %}
+						    {% include "_components/link" with { linkField: link, btnStyle: true, withBg: true, withArrow: true, extraClass: 'mt-base' } %}
+                        {% endif %}
+                        {% if url %}
+						    {% include "_components/link" with { url: url, label: linkBtnTitle, btnStyle: true, withBg: true, withArrow: true, extraClass: 'mt-base' } %}
+                        {% endif %}
 					</div>
 				{% endif %}
 			</div>
 			<div class="col-start-8 col-span-4 flex flex-col gap-2xl">
 				{% for item in otherBlogs %}
-					<a href="{{ item.url }}" class="group">
+					<a href="{{ item.url }}" class="group card-blog">
 						<div>
 							<div class="rounded-base overflow-hidden">
 								{% if item.img.one() %}
-									{% include "_components/asset" with { asset: item.img.one() } %}
+									{% include "_components/asset" with { asset: item.img.one(), class: "card-blog-img" } %}
 								{% endif %}
 							</div>
 							<div class="flex flex-row items-end justify-between w-full mt-sm">

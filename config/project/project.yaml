@@ -1,4 +1,4 @@
-dateModified: 1773069750
+dateModified: 1773239921
 elementSources:
   craft\elements\Entry:
     -
@@ -98,8 +98,27 @@ elementSources:
       page: Entries
       type: native
     -
-      key: 'section:0db920fc-65a8-4958-a4ae-28660f9e88b3' # Autheurs
+      key: 'section:0db920fc-65a8-4958-a4ae-28660f9e88b3' # Auteurs
       page: Entries
+      type: native
+    -
+      key: 'section:4b76fc78-7a69-43f2-b727-3c1aa6117b75' # Locaties
+      page: Entries
+      type: native
+    -
+      defaultSort:
+        - postDate
+        - desc
+      defaultViewMode: ''
+      disabled: false
+      key: 'section:cd560280-3a03-4061-8a10-7ce7a9c06dc4' # Certificaten
+      page: Entries
+      tableAttributes:
+        - status
+        - postDate
+        - expiryDate
+        - authors
+        - link
       type: native
     -
       heading: Globalen
@@ -151,7 +170,9 @@ elementSources:
             operator: in
             uid: aad970dc-a666-4ce5-977a-9968507ce21e
             values:
+              - 8b9168e7-b427-4475-86d0-3b6073368920
               - b9ccf89e-dfed-4115-885f-a4fa59fe0da5 # Vaste content blog
+              - c9ba7528-d100-4412-bb35-7e0a55196989
         elementType: craft\elements\Entry
         fieldContext: global
       defaultSort:
@@ -218,35 +239,41 @@ fs:
 meta:
   __names__:
     0c71ac55-7755-4836-a994-46cdb5598721: 'CTA / Banner' # CTA / Banner
-    0cd0b883-5ab2-423f-846c-79048e845068: Simple # Simple
-    0db920fc-65a8-4958-a4ae-28660f9e88b3: Autheurs # Autheurs
+    0db920fc-65a8-4958-a4ae-28660f9e88b3: Auteurs # Auteurs
+    0fef729c-00c4-43c4-9d5c-99e06d21addc: 'Optellende cijfers' # Optellende cijfers
+    1a9192ca-f304-4288-bef7-3d8252065024: 'Boolean On' # Boolean On
     1cb587a7-06a2-43fd-baf9-76c5a3643fa6: 'Content Builder' # Content Builder
     2c01efec-a28c-48e1-8739-a6349de38b0e: 'list item' # list item
     2cd779f0-ed42-4b4e-bfc2-b308659a59d3: 'Contact Form' # Contact Form
+    2def35aa-0a50-4a93-b6cf-f5cab621b71e: Auteur # Auteur
     3c87820d-7380-4d79-b2ba-066b52070437: 'Grid item' # Grid item
     3d2950df-c852-41fc-822f-3693d59cb426: Hero # Hero
     3e3c8e13-40d3-4a3d-bec8-319341178bcb: Blog # Blog
+    4b76fc78-7a69-43f2-b727-3c1aa6117b75: Locaties # Locaties
     4db13d2e-52ea-40df-a669-bc6f26a7b3b7: 'Content overzicht' # Content overzicht
     4df51339-725b-4b93-9923-51fd75ff7503: 'Interne link' # Interne link
     5d992cd5-90eb-4385-ab67-201f8c4735d3: Formulier # Formulier
     5e73d60b-902d-4638-970b-a1db997ab152: Afbeeldingen # Afbeeldingen
+    5fc4590c-a07a-408a-87ed-18342c651134: Certificate # Certificate
+    06a7bdc2-6b13-4b1b-9cff-9f85fa0a2f08: 'Styling weergave' # Styling weergave
     7ba66ae6-8f74-4654-bf31-85557659bb59: 'Content builder' # Content builder
     7bf8a881-40d9-405e-8ff9-01327db24e82: Tekst # Tekst
     8d1abe98-fa53-4467-9374-ed515e19adc8: 'Custom blok' # Custom blok
     8da8895a-e435-4c1c-b380-2adaed160428: 'Herbruikbare blok' # Herbruikbare blok
     8f0db651-05cb-4d73-9531-29f24587491d: 'Lijst type' # Lijst type
     9ab6bb51-b970-4016-a18f-5e73602a97d4: 'Klant SEO' # Klant SEO
-    9ae8bc99-812c-41f7-8055-6b34d438d1a4: Title # Title
+    9ae8bc99-812c-41f7-8055-6b34d438d1a4: Auteur # Auteur
     9b22aff0-e05a-4e7c-88e8-96ac02f22e1c: 'Custom blok' # Custom blok
     9db5369a-8f2a-4874-b761-38504550498b: 'Lijst titel, tekst en icoon' # Lijst titel, tekst en icoon
     9f657aa3-5a52-40ab-9e54-3be4ffbe250b: 'Externe url' # Externe url
     9fad849c-33cb-45ee-8437-0998daace584: Form # Form
     10fa1a6d-9eae-450d-afe2-07914cf42d54: Bedrijfsgegevens # Bedrijfsgegevens
-    19c6391b-a582-4651-b999-d4761e7a122c: vydraulics # vydraulics
+    19c6391b-a582-4651-b999-d4761e7a122c: 'Vydraulics EN' # Vydraulics EN
     21bdbefb-8c0d-4c59-a882-513e50af4f07: Images # Images
     22a975b8-0012-4343-a4ce-1d80cf79af7f: 'Klant Basis' # Klant Basis
     36eb657c-3e53-401a-acbe-4b67bd2aa5e3: Video # Video
     036f8a8a-800a-4e40-853c-36483ceb875c: SEO # SEO
+    43a90934-c974-41c1-9585-fb96d742bec9: 'Tekst Lijst' # Tekst Lijst
     50c7d6c4-07af-4aea-b86a-78d535b81ae4: Home # Home
     50c54ef8-5dbb-4881-b601-79190dcf19cb: Extern # Extern
     51f3e700-4192-498d-9595-be3017b6a585: Address # Address
@@ -256,6 +283,8 @@ meta:
     89e06ce2-ff33-4cd0-97d9-8d3ff401aaa4: '404' # 404
     91a218c7-298e-4670-8058-d50adfc09650: 'Lijst titel en tekst' # Lijst titel en tekst
     266ced0e-c3ba-43c6-915a-b36a12ff5665: Grafisch # Grafisch
+    442c9c04-b80e-4f2a-9190-d20bf279fa47: 'Optellende cijfers' # Optellende cijfers
+    809abac6-c0fa-4e26-ace3-b78963f017f1: 'Herbuikbare Blok' # Herbuikbare Blok
     866e99bb-53fe-42ee-abd1-4cbb934afeb9: E-mail # E-mail
     880b0bcc-6186-4b71-b7e6-39d3afe13757: Weergave # Weergave
     921c0d73-9e49-4b11-aeda-59d9a7d23434: Industries # Industries
@@ -285,13 +314,16 @@ meta:
     b2150467-5909-43c9-b0bf-24c286b78544: '404' # 404
     b8548411-9aed-4a77-8336-5215cab501c2: Videos # Videos
     bb7becdd-3a77-49f6-bf93-f1fd1d9d8f9a: Link # Link
-    c4f44d9e-2af6-4882-b423-60713b419810: Expanded # Expanded
+    c9eb5372-833a-4f86-8ea1-b38855f1c646: Locatie # Locatie
+    cd9ac4b1-5d1a-4f39-afd7-8a91940ece7a: 'Vydraulics NL' # Vydraulics NL
+    cd560280-3a03-4061-8a10-7ce7a9c06dc4: Certificaten # Certificaten
     d5ff05d1-6363-4f78-b240-c6d01051021f: Lijst # Lijst
     d7a579e5-8da4-4e95-aaea-8c7a35a1123f: "Pagina's" # Pagina's
     d419b9ec-3b83-48e2-a5d5-7d675cd35d06: Afbeelding # Afbeelding
     d5670209-ed06-4feb-a759-387539d6656a: Grafisch # Grafisch
     db395745-863e-4cb8-bec2-9ff2beedf3e3: 'News & updates' # News & updates
     dcb1221a-0380-45bb-a0b8-1b49332cd861: 'Herbruikbare blok' # Herbruikbare blok
+    df89fdf1-a20b-4109-a4f3-f03032ad1c95: 'Weergave selectie' # Weergave selectie
     df575115-ab5c-44bf-b3d6-e5b977e66a89: Videos # Videos
     e7d4a70c-a925-4f2d-a4d5-403db94ee1cd: 'Vaste content' # Vaste content
     e9612cf6-d08f-4d03-bd5b-4376c815ece7: 'Tekst en media kaarten ' # Tekst en media kaarten 
@@ -305,7 +337,11 @@ plugins:
   ckeditor:
     edition: standard
     enabled: true
-    schemaVersion: 3.0.0.0
+    schemaVersion: 5.0.0.1
+  feed-me:
+    edition: standard
+    enabled: true
+    schemaVersion: 5.14.0
   formie:
     edition: standard
     enabled: true

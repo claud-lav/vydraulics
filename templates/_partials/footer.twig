@@ -16,34 +16,34 @@
                 {% endif %}
             </div>
         </div>
-        <nav class="col-span-8">
-            <ul class="flex gap-4">
-            {% for item in navigation %}
-                <li>
-                    {% if item.type.handle is same as 'dropdownLabel' %}
-                        <span class="block font-bold mb-base">{{ item.title }}</span>
-                        <ul class="flex flex-col gap-0.5">
-                            {% for child in item.children %}
-                                <li>
-                                    <a class="hover:text-prim" href="{{ child.url }}"> {{ child.footLabel is not null ? child.footLabel : child.title }}</a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    {% elseif item.showCollection %}
-                        {% set collection = craft.entries().section(item.collection.value).level(1).all() %}
-                        <a class="font-bold hover:text-prim block mb-base" href="{{ item.url }}"> {{ item.footLabel is not null ? item.footLabel : item.title }}</a>
-                        <ul class="flex flex-col gap-0.5">
-                            {% for subItem in collection %}
-                                <li>
-                                    <a class="hover:text-prim" href="{{ subItem.url }}"> {{ subItem.footLabel is not null ? subItem.footLabel : subItem.title }}</a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    {% else %}
-                        <a class="font-bold hover:text-prim" href="{{ item.url }}"> {{ item.footLabel is not null ? item.footLabel : item.title }}</a>
-                    {% endif %}
-                </li>
-            {% endfor %}
+        <nav class="col-span-full xl:col-span-8">
+            <ul class="flex flex-col lg:flex-row gap-2 lg:gap-4">
+                {% for item in navigation %}
+                    <li>
+                        {% if item.type.handle is same as 'dropdownLabel' %}
+                            <span class="block font-bold mb-base">{{ item.title }}</span>
+                            <ul class="flex flex-col gap-0.5">
+                                {% for child in item.children %}
+                                    <li>
+                                        <a class="hover:text-prim" href="{{ child.url }}"> {{ child.footLabel is not null ? child.footLabel : child.title }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% elseif item.showCollection %}
+                            {% set collection = craft.entries().section(item.collection.value).level(1).all() %}
+                            <a class="font-bold hover:text-prim block mb-base" href="{{ item.url }}"> {{ item.footLabel is not null ? item.footLabel : item.title }}</a>
+                            <ul class="flex flex-col gap-0.5">
+                                {% for subItem in collection %}
+                                    <li>
+                                        <a class="hover:text-prim" href="{{ subItem.url }}"> {{ subItem.footLabel is not null ? subItem.footLabel : subItem.title }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <a class="font-bold hover:text-prim" href="{{ item.url }}"> {{ item.footLabel is not null ? item.footLabel : item.title }}</a>
+                        {% endif %}
+                    </li>
+                {% endfor %}
             </ul>
         </nav>
 	</div>

@@ -1,27 +1,25 @@
-body .fui {
-    &-label {
-        @apply text-white;
-    }
+body .fui-label {
+    @apply text-white;
+}
 
-    &-input, &-select {
-        @apply text-white border border-prim rounded-full bg-transparent px-1.75 py-1 font-base leading-tight;
-    }
+body .fui-input, body .fui-select {
+    @apply text-white border border-prim rounded-full bg-transparent px-1.75 py-1 font-base leading-tight;
+}
 
-    &-btn {
-        @apply rounded-full bg-prim border-prim hover:bg-prim-darker hover:border-prim-darker;
-    }
+body .fui-btn {
+    @apply rounded-full bg-prim border-prim hover:bg-prim-darker hover:border-prim-darker;
+}
 
-    &-error-message {
-        @apply text-error
-    }
+body .fui-error-message {
+    @apply text-error
+}
 
-    &-error {
-        @apply border-error
-    }
+body .fui-error {
+    @apply border-error
+}
 
-    &-required {
-        @apply text-prim;
-    }
+body .fui-required {
+    @apply text-prim;
 }
 
 body textarea.fui-input {

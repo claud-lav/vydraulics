@@ -4,11 +4,13 @@
         <div class="swiper-wrapper">
             {% for item in timelineItems %}
                 <div class="group swiper-slide relative flex items-center py-2xl">
-                    <div class="absolute left-[calc(50%+20rem)] top-1/2 -translate-y-1/2 font-heading font-bold text-white whitespace-nowrap leading-none pointer-events-none select-none text-[clamp(5rem,15vw,16rem)] transition-transform duration-800 origin-left group-[.swiper-slide-prev]:scale-[1.75]" aria-hidden="true">{{ item.year }}</div>
-                    <div class="container relative z-10">
-                        <div class="mx-auto max-w-40 bg-white/24 backdrop-blur-sm p-lg rounded-base">
-                            <h2 class="font-heading font-bold text-md text-sec">{{ item.title }}</h2>
-                            <p class="mt-sm text-base text-quat">{{ item.text }}</p>
+                    <div class="center">
+                        <div class="container container-grid relative z-10">
+                            <div class="ml-2.5 row-start-1 col-start-8 self-center font-heading font-bold text-white whitespace-nowrap leading-none pointer-events-none select-none text-[clamp(5rem,15vw,14rem)] transition-transform duration-800 origin-left group-[.swiper-slide-prev]:scale-[1.65] -translate-y-2.5 group-[.swiper-slide-prev]:translate-y-2 group-[.swiper-slide-prev]:translate-x-12" aria-hidden="true">{{ item.year }}</div>
+                            <div class="row-start-1 col-start-4 col-span-5 bg-white/24 backdrop-blur-sm p-lg rounded-base z-10">
+                                <h2 class="font-heading font-bold text-md text-sec">{{ item.title }}</h2>
+                                <p class="mt-sm text-base text-quat">{{ item.text }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>

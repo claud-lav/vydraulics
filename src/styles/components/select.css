@@ -1,0 +1,3 @@
+.select {
+    @apply text-prim border-1 rounded-full border-prim py-[0.875rem] px-base hover:bg-prim min-w-15 w-fit;
+}

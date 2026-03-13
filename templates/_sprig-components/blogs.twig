@@ -1,0 +1,26 @@
+{% set blogs = craft.entries().section('blogs').all() %}
+{% set solutions = craft.entries().section('solutions').level(1).all() %}
+{% set industries = craft.entries().section('industries').level(1).all() %}
+
+<section class="section">
+    <div class="container container-grid">
+        <div class="col-span-3 flex flex-col gap-xs">
+            <button class="link link-btn text-prim">{{ 'All news'|t }}</button>
+            <select class="select" name="" id="">
+                <option value="">{{ 'solutions'|t }}</option>
+                {% for item in solutions %}
+                    <option value="{{ item.slug }}">{{ item.title }}</option>
+                {% endfor %}
+            </select>
+            <select class="select" name="" id="">
+                <option value="">{{ 'Industries'|t }}</option>
+                {% for item in industries %}
+                    <option value="{{ item.slug }}">{{ item.title }}</option>
+                {% endfor %}
+            </select>
+        </div>    
+        <div class="col-start-4 col-span-9">
+
+        </div>    
+    </div>
+</section>

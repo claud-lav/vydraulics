@@ -7,7 +7,7 @@
 }
 
 .link-btn {
-    @apply border-1 rounded-full border-prim py-[0.875rem] px-base hover:bg-prim;
+    @apply border-1 rounded-full border-prim py-[0.875rem] px-base hover:bg-prim after:content-none;
 }
 
 .link-btn--sec {

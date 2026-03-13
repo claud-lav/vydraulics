@@ -28,37 +28,34 @@
             {% if asAccordion %}
                 <ul class="w-full min-w-0 flex flex-col xl:flex-row gap-xs overflow-hidden" x-data="{ openItem: 0 }">
                     {% for item in items %}
-                        <li class="accordion-card group rounded-base transition-[flex,width,background-color,padding] duration-500 ease-in-out cursor-pointer flex py-base xl:py-md"
+                        <li class="accordion-card group rounded-base overflow-hidden transition-[flex,background-color,padding] duration-500 ease-in-out cursor-pointer flex py-base xl:py-md bg-white"
                             @click="openItem == {{ loop.index }} ? openItem = 0 : openItem = {{ loop.index }}"
-                            :class="openItem == {{ loop.index }} ? 'xl:w-27 xl:shrink-0 px-base sm:pl-sm sm:pr-lg bg-black' : 'xl:flex-1 bg-white items-center xl:justify-center px-base xl:px-0'"
+                            :class="openItem == {{ loop.index }} ? 'xl:basis-27 xl:grow-0 xl:shrink-0 px-base sm:pl-base sm:pr-lg bg-black!' : 'xl:flex-1 items-center xl:justify-center px-base xl:px-0'"
                             >
-                            <div class="flex flex-col h-full w-full">
-                                <div class="flex flex-row justify-between items-center gap-sm w-full"
+                            <div class="flex flex-col h-full w-full px-1">
+                                <div class="flex flex-row items-center gap-1.5 w-full"
                                     :class="openItem == {{ loop.index }} ? '' : 'xl:flex-col xl:justify-start xl:h-full'"
                                     >
-                                    <span class="transition shrink-0" :class="openItem == {{ loop.index }} ? 'rotate-45' : 'rotate-0'">
+                                    <span class="transition-rotate transition-transform duration-500 ease-in-out shrink-0 group-hover:rotate-45" :class="openItem == {{ loop.index }} ? 'rotate-45' : 'rotate-0'">
                                         {{ svg('assets/icons/arrow-top-right.svg')|attr({ class:"w-1 text-prim" })}}
                                     </span>
                                     <h3 class="font-heading font-bold text-sm transition-colors"
                                         :class="openItem == {{ loop.index }} ? 'text-white' : 'xl:[writing-mode:vertical-rl] xl:rotate-180 xl:mt-auto whitespace-nowrap'"
                                         >{{ item.title }}</h3>
                                 </div>
-                                <div x-show="openItem == {{ loop.index }}"
-                                    x-transition:enter="transition-opacity duration-300 delay-150"
-                                    x-transition:enter-start="opacity-0"
-                                    x-transition:enter-end="opacity-100"
-                                    x-transition:leave="transition-opacity duration-150"
-                                    x-transition:leave-start="opacity-100"
-                                    x-transition:leave-end="opacity-0"
-                                    class="text-white mt-sm"
-                                    x-cloak>
-                                    <p class="mb-sm">{{ item.textMultiple }}</p>
-                                    {% include "_components/link" with {
-                                        url: item.url,
-                                        label: 'More about'|t ~ ' ' ~ item.title|lower,
-                                        withArrow: true,
-                                        noBorderAnimation: true
-                                    } %}
+                                <div class="grid transition-[grid-template-rows] ease-in-out"
+                                    :class="openItem == {{ loop.index }} ? 'grid-rows-[1fr] duration-300 delay-300' : 'grid-rows-[0fr] duration-0'">
+                                    <div class="overflow-hidden text-white pl-2.5 xl:min-w-24 sm:pr-3.5">
+                                        <div class="mt-sm">
+                                            <p class="mb-sm">{{ item.textMultiple }}</p>
+                                            {% include "_components/link" with {
+                                                url: item.url,
+                                                label: 'More about'|t ~ ' ' ~ item.title|lower,
+                                                withArrow: true,
+                                                noBorderAnimation: true
+                                            } %}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </li>
